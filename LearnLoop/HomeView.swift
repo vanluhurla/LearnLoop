@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  HomeView.swift
 //  LearnLoop
 //
 //  Created by Vanessa Hurla on 24/07/2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct HomeView: View {
     
     @State var deckOne: [String] = ["UIKit", "SwiftUI"]
     
@@ -27,7 +27,6 @@ struct MainView: View {
                     EditButton()
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    
                 }
             }
         }
@@ -35,5 +34,7 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    HomeView()
 }
+
+
