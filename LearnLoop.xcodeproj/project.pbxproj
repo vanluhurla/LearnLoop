@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		03CEFF462C516FA0003A5A1C /* LearnLoopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF452C516FA0003A5A1C /* LearnLoopApp.swift */; };
-		03CEFF482C516FA0003A5A1C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF472C516FA0003A5A1C /* HomeView.swift */; };
+		03CEFF482C516FA0003A5A1C /* LLHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF472C516FA0003A5A1C /* LLHomeView.swift */; };
 		03CEFF4A2C516FA4003A5A1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03CEFF492C516FA4003A5A1C /* Assets.xcassets */; };
 		03CEFF4D2C516FA4003A5A1C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03CEFF4C2C516FA4003A5A1C /* Preview Assets.xcassets */; };
 		03CEFF572C516FA5003A5A1C /* LearnLoopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF562C516FA5003A5A1C /* LearnLoopTests.swift */; };
 		03CEFF612C516FA5003A5A1C /* LearnLoopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF602C516FA5003A5A1C /* LearnLoopUITests.swift */; };
 		03CEFF632C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF622C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift */; };
+		03D157832C5A74DF00C9602C /* LLHomeDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		03CEFF422C516FA0003A5A1C /* LearnLoop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnLoop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03CEFF452C516FA0003A5A1C /* LearnLoopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLoopApp.swift; sourceTree = "<group>"; };
-		03CEFF472C516FA0003A5A1C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		03CEFF472C516FA0003A5A1C /* LLHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeView.swift; sourceTree = "<group>"; };
 		03CEFF492C516FA4003A5A1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03CEFF4C2C516FA4003A5A1C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		03CEFF522C516FA5003A5A1C /* LearnLoopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnLoopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +45,7 @@
 		03CEFF5C2C516FA5003A5A1C /* LearnLoopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnLoopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03CEFF602C516FA5003A5A1C /* LearnLoopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLoopUITests.swift; sourceTree = "<group>"; };
 		03CEFF622C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLoopUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeDeckCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				03CEFF452C516FA0003A5A1C /* LearnLoopApp.swift */,
-				03CEFF472C516FA0003A5A1C /* HomeView.swift */,
+				03D157842C5A87DB00C9602C /* View */,
 				03CEFF492C516FA4003A5A1C /* Assets.xcassets */,
 				03CEFF4B2C516FA4003A5A1C /* Preview Content */,
 			);
@@ -125,6 +127,23 @@
 				03CEFF622C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift */,
 			);
 			path = LearnLoopUITests;
+			sourceTree = "<group>";
+		};
+		03D157842C5A87DB00C9602C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				03D157852C5A87F100C9602C /* Home */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		03D157852C5A87F100C9602C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */,
+				03CEFF472C516FA0003A5A1C /* LLHomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +276,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03CEFF482C516FA0003A5A1C /* HomeView.swift in Sources */,
+				03D157832C5A74DF00C9602C /* LLHomeDeckCell.swift in Sources */,
+				03CEFF482C516FA0003A5A1C /* LLHomeView.swift in Sources */,
 				03CEFF462C516FA0003A5A1C /* LearnLoopApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
