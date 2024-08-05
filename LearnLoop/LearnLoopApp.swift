@@ -11,7 +11,7 @@ import SwiftUI
 struct LearnLoopApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            LLHomeView()
         }
     }
 }
