@@ -7,37 +7,33 @@
 
 import SwiftUI
 
-struct Deck: Identifiable {
+
+struct Deck: Identifiable, Hashable {
     var id = UUID()
     var title: String
 }
 
 struct LLHomeView: View {
-    @State private var decks: [Deck] = [] // Mutable array to hold decks
+    @State private var decks: [Deck] = []
     
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    ForEach($decks) { $deck in
-                        LLHomeDeckCell(deck: $deck)
-                    }
-                    .onDelete(perform: deleteDeck) // Ensure `onDelete` is applied here
+            List {
+                ForEach($decks, id: \.self) { deck in
+                    LLHomeDeckCell(deck: deck)
                 }
-                .navigationTitle("My Decks")
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        EditButton()
-                    }
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button(action: addNewDeck) {
-                            Image(systemName: "plus")
-                        }
+                .onDelete(perform: deleteDeck)
+            }
+            .navigationTitle("My Decks")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: addNewDeck) {
+                        Image(systemName: "plus")
                     }
                 }
             }
             .onTapGesture {
-                dismissKeyboard() // Dismiss keyboard on tap outside
+                dismissKeyboard()
             }
         }
     }
@@ -48,7 +44,7 @@ struct LLHomeView: View {
     }
     
     private func deleteDeck(at offsets: IndexSet) {
-        decks.remove(atOffsets: offsets) // Correctly handles deletion
+        decks.remove(atOffsets: offsets)
     }
     
     private func dismissKeyboard() {

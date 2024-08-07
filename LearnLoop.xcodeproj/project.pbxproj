@@ -15,6 +15,7 @@
 		03CEFF612C516FA5003A5A1C /* LearnLoopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF602C516FA5003A5A1C /* LearnLoopUITests.swift */; };
 		03CEFF632C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF622C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift */; };
 		03D157832C5A74DF00C9602C /* LLHomeDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */; };
+		03F76C812C63B999005C4097 /* LLCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76C802C63B998005C4097 /* LLCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		03CEFF602C516FA5003A5A1C /* LearnLoopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLoopUITests.swift; sourceTree = "<group>"; };
 		03CEFF622C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLoopUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeDeckCell.swift; sourceTree = "<group>"; };
+		03F76C802C63B998005C4097 /* LLCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		03CEFF442C516FA0003A5A1C /* LearnLoop */ = {
 			isa = PBXGroup;
 			children = (
+				03F76C822C63BAA3005C4097 /* Model */,
 				03CEFF452C516FA0003A5A1C /* LearnLoopApp.swift */,
 				03D157842C5A87DB00C9602C /* View */,
 				03CEFF492C516FA4003A5A1C /* Assets.xcassets */,
@@ -132,6 +135,7 @@
 		03D157842C5A87DB00C9602C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				03F76C782C62855D005C4097 /* CardView */,
 				03D157852C5A87F100C9602C /* Home */,
 			);
 			path = View;
@@ -144,6 +148,21 @@
 				03CEFF472C516FA0003A5A1C /* LLHomeView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		03F76C782C62855D005C4097 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				03F76C802C63B998005C4097 /* LLCardView.swift */,
+			);
+			path = CardView;
+			sourceTree = "<group>";
+		};
+		03F76C822C63BAA3005C4097 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F76C812C63B999005C4097 /* LLCardView.swift in Sources */,
 				03D157832C5A74DF00C9602C /* LLHomeDeckCell.swift in Sources */,
 				03CEFF482C516FA0003A5A1C /* LLHomeView.swift in Sources */,
 				03CEFF462C516FA0003A5A1C /* LearnLoopApp.swift in Sources */,
