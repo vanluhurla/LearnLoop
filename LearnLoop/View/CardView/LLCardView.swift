@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct LLCardView: View {
+    var card: Card
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(card.front)
+                .font(.largeTitle)
+                .padding()
+            
+            Divider()
+            
+            Text(card.back)
+                .font(.title)
+                .padding()
+        }
+        .navigationTitle("Card Detail")
     }
 }
 
 #Preview {
-    LLCardView()
+    LLCardView(card: Card(front: "Front Side", back: "Back Side"))
 }

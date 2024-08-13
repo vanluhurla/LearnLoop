@@ -7,39 +7,50 @@
 
 import SwiftUI
 
-
-struct Deck: Identifiable, Hashable {
-    var id = UUID()
-    var title: String
-}
-
 struct LLHomeView: View {
+    
     @State private var decks: [Deck] = []
+    @State private var isEditing: Bool = false
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach($decks, id: \.self) { deck in
-                    LLHomeDeckCell(deck: deck)
+            VStack {
+                List {
+                    ForEach($decks) { $deck in
+                        if isEditing {
+                            LLHomeDeckCell(deck: $deck, isEditing: isEditing)
+                        } else {
+                            NavigationLink(destination: LLCardView(card: deck.cards.first ?? Card(front: "Front", back: "Back"))) {
+                                LLHomeDeckCell(deck: $deck, isEditing: isEditing)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                        }
+                    }
+                    .onDelete(perform: deleteDeck)
                 }
-                .onDelete(perform: deleteDeck)
-            }
-            .navigationTitle("My Decks")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: addNewDeck) {
-                        Image(systemName: "plus")
+                .navigationTitle("My Decks")
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button(action: toggleEditing) {
+                            Image(systemName: isEditing ? "checkmark.circle" : "square.and.pencil")
+                        }
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button(action: addNewDeck) {
+                            Image(systemName: "plus")
+                        }
                     }
                 }
-            }
-            .onTapGesture {
-                dismissKeyboard()
             }
         }
     }
     
+    private func toggleEditing() {
+        isEditing.toggle()
+    }
+    
     private func addNewDeck() {
-        let newDeck = Deck(title: "New Deck")
+        let newDeck = Deck(title: "New Deck", cards: [Card(front: "Example Front", back: "Example Back")])
         decks.append(newDeck)
     }
     
@@ -47,12 +58,8 @@ struct LLHomeView: View {
         decks.remove(atOffsets: offsets)
     }
     
-    private func dismissKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
 }
-
+    
 #Preview {
     LLHomeView()
 }
-

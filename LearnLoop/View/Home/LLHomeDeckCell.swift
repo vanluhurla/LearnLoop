@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct LLHomeDeckCell: View {
+    
     @Binding var deck: Deck
+    var isEditing: Bool
     
     var body: some View {
         HStack {
@@ -17,17 +19,25 @@ struct LLHomeDeckCell: View {
                 .frame(width: 60, height: 60)
                 .padding()
             
-            TextField("Deck Title", text: $deck.title)
-                .fontWeight(.semibold)
-                .lineLimit(2)
-                .minimumScaleFactor(0.5)
-                .keyboardType(/*@START_MENU_TOKEN@*/.default/*@END_MENU_TOKEN@*/)
-                .textInputAutocapitalization(.sentences)
+            if isEditing {
+                TextField("Deck Title", text: $deck.title)
+                    .fontWeight(.semibold)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.5)
+                
+            } else {
+                Text(deck.title)
+                    .fontWeight(.semibold)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.5)
+            }
         }
+        .background(Color.clear)
+        .contentShape(Rectangle())
+        .padding()
     }
 }
 
 #Preview {
-    // Create a constant Deck to use in the preview
-    LLHomeDeckCell(deck: .constant(Deck(title: "Sample Deck")))
+    LLHomeDeckCell(deck: .constant(Deck(title: "Sample Deck", cards: [Card(front: "Front", back: "Back")])), isEditing: false)
 }
