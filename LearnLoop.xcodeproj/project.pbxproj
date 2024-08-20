@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		037E67FB2C6E57B900F1CF83 /* LLColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E67FA2C6E57B900F1CF83 /* LLColours.swift */; };
 		03CEFF462C516FA0003A5A1C /* LearnLoopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF452C516FA0003A5A1C /* LearnLoopApp.swift */; };
 		03CEFF482C516FA0003A5A1C /* LLHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF472C516FA0003A5A1C /* LLHomeView.swift */; };
 		03CEFF4A2C516FA4003A5A1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03CEFF492C516FA4003A5A1C /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		037E67FA2C6E57B900F1CF83 /* LLColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLColours.swift; sourceTree = "<group>"; };
 		03CEFF422C516FA0003A5A1C /* LearnLoop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnLoop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03CEFF452C516FA0003A5A1C /* LearnLoopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLoopApp.swift; sourceTree = "<group>"; };
 		03CEFF472C516FA0003A5A1C /* LLHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeView.swift; sourceTree = "<group>"; };
@@ -79,9 +81,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		037E67F92C6E578C00F1CF83 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				037E67FA2C6E57B900F1CF83 /* LLColours.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
 		03CEFF392C516FA0003A5A1C = {
 			isa = PBXGroup;
 			children = (
+				037E67F92C6E578C00F1CF83 /* Design */,
 				03CEFF442C516FA0003A5A1C /* LearnLoop */,
 				03CEFF552C516FA5003A5A1C /* LearnLoopTests */,
 				03CEFF5F2C516FA5003A5A1C /* LearnLoopUITests */,
@@ -306,6 +317,7 @@
 				03D157832C5A74DF00C9602C /* LLHomeDeckCell.swift in Sources */,
 				03CEFF482C516FA0003A5A1C /* LLHomeView.swift in Sources */,
 				03CEFF462C516FA0003A5A1C /* LearnLoopApp.swift in Sources */,
+				037E67FB2C6E57B900F1CF83 /* LLColours.swift in Sources */,
 				03F76C872C63BD18005C4097 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

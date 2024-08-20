@@ -14,8 +14,9 @@ struct LLHomeDeckCell: View {
     
     var body: some View {
         HStack {
-            Circle()
-                .fill(Color.blue)
+            deck.image?
+                .resizable()
+                .scaledToFit()
                 .frame(width: 60, height: 60)
                 .padding()
             
@@ -38,6 +39,11 @@ struct LLHomeDeckCell: View {
     }
 }
 
-#Preview {
-    LLHomeDeckCell(deck: .constant(Deck(title: "Sample Deck", cards: [Card(front: "Front", back: "Back")])), isEditing: false)
+struct LLHomeDeckCell_Previews: PreviewProvider {
+    static var previews: some View {
+        let sampleImage = Image("lamp")
+        let sampleDeck = Deck(image: sampleImage, title: "Sample Deck", cards: [Card(front: "Front", back: "Back")])
+        LLHomeDeckCell(deck: .constant(sampleDeck), isEditing: false)
+            .previewLayout(.sizeThatFits)
+    }
 }

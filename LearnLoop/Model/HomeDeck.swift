@@ -5,10 +5,11 @@
 //  Created by Vanessa Hurla on 07/08/2024.
 //
 
-import Foundation
+import SwiftUI
 
 struct Deck: Identifiable, Equatable {
     var id = UUID()
+    var image: Image?
     var title: String
     var cards: [Card] = []
 }
