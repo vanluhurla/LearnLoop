@@ -16,7 +16,6 @@ struct LLHomeView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottomTrailing) {
-                // List view with less padding or negative padding to avoid blocking the scroll
                 List {
                     ForEach($decks) { $deck in
                         if isEditing {
@@ -31,17 +30,15 @@ struct LLHomeView: View {
                     .onDelete(perform: deleteDeck)
                 }
                 .navigationTitle("My Decks")
-                .background(Color(UIColor.systemGray6)) // Light grey background for the List
+                .background(Color(UIColor.systemGray6))
                 .scrollContentBackground(.hidden)
-                .padding(.bottom, 15) // Less padding so content can scroll behind buttons
+                .padding(.bottom, 15)
                 
-                // Buttons stacked on top of the list
                 VStack {
                     Spacer()
                     HStack {
                         Spacer()
                         ZStack {
-                            // Add the buttons
                             Button(action: addNewDeck) {
                                 ItemButton(colour: Color.orange.opacity(0.5), iconName: "rectangle.stack.badge.plus")
                             }
@@ -55,7 +52,6 @@ struct LLHomeView: View {
                             .animation(showItems ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.3), value: showItems)
                             .disabled(decks.isEmpty)
                             
-                            // Main Button
                             Button(action: {
                                 withAnimation(showItems ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.6)) {
                                     showItems.toggle()
@@ -64,13 +60,13 @@ struct LLHomeView: View {
                                 ItemButton(colour: Color.blue, iconName: "plus")
                             }
                         }
-                        .padding([.bottom, .trailing], 25) // Padding to keep the buttons off the edges
-                        .zIndex(1) // Ensure buttons are above the list
+                        .padding([.bottom, .trailing], 25)
+                        .zIndex(1)
                     }
                 }
-                .frame(width: screen.width) // Ensure the frame covers the area
+                .frame(width: screen.width)
             }
-            .background(Color(UIColor.systemGray6).edgesIgnoringSafeArea(.all)) // Background color for the entire view
+            .background(Color(UIColor.systemGray6).edgesIgnoringSafeArea(.all))
         }
     }
     
