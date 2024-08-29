@@ -25,7 +25,6 @@ struct LLHomeDeckCell: View {
                     .fontWeight(.semibold)
                     .lineLimit(2)
                     .minimumScaleFactor(0.5)
-                
             } else {
                 Text(deck.title)
                     .fontWeight(.semibold)
@@ -33,12 +32,12 @@ struct LLHomeDeckCell: View {
                     .minimumScaleFactor(0.5)
             }
         }
+        .padding(.vertical, isEditing ? 10 : 0)
         .background(Color.clear)
         .contentShape(Rectangle())
         .padding()
     }
 }
-
 struct LLHomeDeckCell_Previews: PreviewProvider {
     static var previews: some View {
         let sampleImage = Image("lamp")
