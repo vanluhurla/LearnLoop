@@ -11,40 +11,64 @@ struct LLHomeView: View {
     
     @State private var decks: [Deck] = []
     @State private var isEditing: Bool = false
-    @State var showItems = false
+    @State private var showItems = false
+    @State private var isTitleEditing: Bool = false
     
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottomTrailing) {
                 List {
                     ForEach($decks) { $deck in
-                        if isEditing {
-                            LLHomeDeckCell(deck: $deck, isEditing: isEditing)
-                        } else {
-                            NavigationLink(destination: LLCardView(card: deck.cards.first ?? Card(front: "Front", back: "Back"))) {
+                        Group {
+                            if isEditing {
                                 LLHomeDeckCell(deck: $deck, isEditing: isEditing)
+                                    .onTapGesture {
+                                        withAnimation {
+                                            isTitleEditing = true
+                                            showItems = false
+                                        }
+                                    }
+                                    .onDisappear {
+                                        isTitleEditing = false
+                                    }
+                            } else {
+                                NavigationLink(destination: LLCardView(card: deck.cards.first ?? Card(front: "Front", back: "Back"))) {
+                                    LLHomeDeckCell(deck: $deck, isEditing: isEditing)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                .padding(10)
                             }
-                            .buttonStyle(PlainButtonStyle())
                         }
+                        .padding(.vertical, 5)
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
+                        
                     }
+        
                     .onDelete(perform: deleteDeck)
                 }
                 .navigationTitle("My Decks")
+                .listStyle(PlainListStyle())
                 .background(Color(UIColor.systemGray6))
                 .scrollContentBackground(.hidden)
-                .padding(.bottom, 15)
+                .padding(.bottom, -10)
                 
                 VStack {
                     Spacer()
                     HStack {
                         Spacer()
                         ZStack {
-                            Button(action: addNewDeck) {
-                                ItemButton(colour: Color.orange.opacity(0.5), iconName: "rectangle.stack.badge.plus")
+                            if !isTitleEditing {
+                                Button(action: addNewDeck) {
+                                    ItemButton(colour: Color.orange.opacity(0.5), iconName: "rectangle.stack.badge.plus")
+                                }
+                                .offset(y: showItems ? -140 : 0)
+                                .animation(showItems ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.3), value: showItems)
                             }
-                            .offset(y: showItems ? -140 : 0)
-                            .animation(showItems ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.3), value: showItems)
-                            
+
                             Button(action: toggleEditing) {
                                 ItemButton(colour: decks.isEmpty ? Color.gray.opacity(0.5) : Color.green.opacity(0.5), iconName: isEditing ? "checkmark.circle" : "pencil")
                             }
@@ -52,12 +76,14 @@ struct LLHomeView: View {
                             .animation(showItems ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.3), value: showItems)
                             .disabled(decks.isEmpty)
                             
-                            Button(action: {
-                                withAnimation(showItems ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.6)) {
-                                    showItems.toggle()
+                            if !isTitleEditing {
+                                Button(action: {
+                                    withAnimation(showItems ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.6)) {
+                                        showItems.toggle()
+                                    }
+                                }) {
+                                    ItemButton(colour: Color.blue, iconName: "plus")
                                 }
-                            }) {
-                                ItemButton(colour: Color.blue, iconName: "plus")
                             }
                         }
                         .padding([.bottom, .trailing], 25)
@@ -71,7 +97,10 @@ struct LLHomeView: View {
     }
     
     private func toggleEditing() {
-        isEditing.toggle()
+        withAnimation {
+            isEditing.toggle()
+            showItems = false
+        }
     }
     
     private func addNewDeck() {

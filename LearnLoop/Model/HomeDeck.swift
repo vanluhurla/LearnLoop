@@ -10,6 +10,7 @@ import SwiftUI
 struct Deck: Identifiable, Equatable {
     var id = UUID()
     var image: Image?
+    var emoji: String = "📚"
     var title: String
     var cards: [Card] = []
 }
