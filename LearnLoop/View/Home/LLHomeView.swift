@@ -13,6 +13,22 @@ struct LLHomeView: View {
     @State private var isEditing: Bool = false
     @State private var showItems = false
     @State private var isTitleEditing: Bool = false
+    @State private var navigateToFirstCard: Bool = false
+    
+    init() {
+        setupNavigationBarAppearance()
+    }
+    
+    
+    func setupNavigationBarAppearance() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(red: 0.67, green: 0.84, blue: 0.9, alpha: 1.0)
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    }
     
     var body: some View {
         NavigationStack {
@@ -32,7 +48,7 @@ struct LLHomeView: View {
                                         isTitleEditing = false
                                     }
                             } else {
-                                NavigationLink(destination: LLCardView(card: deck.cards.first ?? Card(front: "Front", back: "Back"))) {
+                                NavigationLink(destination: LLFinalCardView()) {
                                     LLHomeDeckCell(deck: $deck, isEditing: isEditing)
                                 }
                                 .buttonStyle(PlainButtonStyle())
@@ -47,7 +63,7 @@ struct LLHomeView: View {
                         .listRowBackground(Color.clear)
                         
                     }
-        
+                    
                     .onDelete(perform: deleteDeck)
                 }
                 .navigationTitle("My Decks")
@@ -62,13 +78,24 @@ struct LLHomeView: View {
                         Spacer()
                         ZStack {
                             if !isTitleEditing {
-                                Button(action: addNewDeck) {
+                                NavigationLink(destination: LLFirstCardView(card: Card(front: "Front", back: "Back"),
+                                                                            onSave: { newCard in
+                                    addFirstCardToNewDeck(newCard)
+                                }
+                                ), isActive: $navigateToFirstCard
+                                ){
+                                    EmptyView()
+                                }
+                                
+                                Button(action: {
+                                    navigateToFirstCard = true
+                                }) {
                                     ItemButton(colour: Color.orange.opacity(0.5), iconName: "rectangle.stack.badge.plus")
                                 }
                                 .offset(y: showItems ? -140 : 0)
                                 .animation(showItems ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.3), value: showItems)
                             }
-
+                            
                             Button(action: toggleEditing) {
                                 ItemButton(colour: decks.isEmpty ? Color.gray.opacity(0.5) : Color.green.opacity(0.5), iconName: isEditing ? "checkmark.circle" : "pencil")
                             }
@@ -96,18 +123,18 @@ struct LLHomeView: View {
         }
     }
     
-    private func toggleEditing() {
-        withAnimation {
-            isEditing.toggle()
+    private func addFirstCardToNewDeck(_ newCard: Card) {
+        let newDeck = Deck(image: Image("lamp"), title: "New Deck \(decks.count + 1)", cards: [newCard])
+        decks.append(newDeck)
+        
+        withAnimation(.easeInOut(duration: 0.3)) {
             showItems = false
         }
     }
     
-    private func addNewDeck() {
-        let newDeck = Deck(image: Image("lamp"), title: "New Deck", cards: [Card(front: "Example Front", back: "Example Back")])
-        decks.append(newDeck)
-        
-        withAnimation(.easeInOut(duration: 0.3)) {
+    private func toggleEditing() {
+        withAnimation {
+            isEditing.toggle()
             showItems = false
         }
     }
@@ -116,7 +143,7 @@ struct LLHomeView: View {
         decks.remove(atOffsets: offsets)
     }
 }
-    
+
 #Preview {
     LLHomeView()
 }
