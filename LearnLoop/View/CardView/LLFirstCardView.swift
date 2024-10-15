@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct LLFirstCardView: View {
-    @Environment(\.presentationMode) var presentationMode // To handle navigation back
+    @Environment(\.dismiss) var dismiss // Here I'm handling navigation back
     @State private var frontText: String
     @State private var backText: String
+    @State private var deckName: String = ""
+    @State private var isShowingFront: Bool = true
     
-    var onSave: (Card) -> Void
+    var onSave: (Deck) -> Void
     
-    // Initialize front and back text from the card
-    init(card: Card, onSave: @escaping (Card) -> Void) {
+    init(card: Card, onSave: @escaping (Deck) -> Void) {
         _frontText = State(initialValue: card.front)
         _backText = State(initialValue: card.back)
         self.onSave = onSave
@@ -23,24 +24,76 @@ struct LLFirstCardView: View {
     
     var body: some View {
         VStack {
-            TextField("Front Side", text: $frontText)
-                .font(.largeTitle)
-                .padding()
-            
-            Divider()
-            
-            TextField("Back Side", text: $backText)
+            TextField("Deck Name", text: $deckName)
                 .font(.title)
                 .padding()
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(10)
+                .padding(.bottom, 20)
+            
+            Spacer()
+            
+            ZStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.white)
+                    .frame(width: 350, height: 600)
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                
+                if isShowingFront {
+                    VStack {
+                        Text("Front - Tap to turn")
+                            .font(.headline)
+                            .padding(.bottom, 50)
+                        
+                        TextEditor(text: $frontText)
+                            .multilineTextAlignment(.center)
+                            .font(.largeTitle)
+                            .padding()
+                            .frame(width: 300, height: 400)
+                            .background(Color.clear)
+                    }
+                    .onTapGesture {
+                        withAnimation {
+                            isShowingFront.toggle()
+                        }
+                    }
+                } else {
+                    VStack {
+                        Text("Back - Tap to turn")
+                            .font(.headline)
+                            .padding(.bottom, 50)
+
+                        TextEditor(text: $backText)
+                            .multilineTextAlignment(.center)
+                            .font(.largeTitle)
+                            .padding()
+                            .frame(width: 300, height: 400)
+                            .background(Color.clear)
+                    }
+                    .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
+                    .onTapGesture {
+                        withAnimation {
+                            isShowingFront.toggle()
+                        }
+                    }
+                }
+            }
+            .rotation3DEffect(
+                .degrees(isShowingFront ? 0 : 180), axis: (x: 0, y: 1, z: 0)
+            )
+            .animation(.easeInOut, value: isShowingFront)
+            
+            Spacer()
         }
-        .navigationTitle("Deck Name")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save") {
-                    let updatedCard = Card(front: frontText, back: backText)
-                    onSave(updatedCard) // Trigger save action
-                    presentationMode.wrappedValue.dismiss() // Navigate back to LLHomeView
+                    let newCard = Card(front: frontText, back: backText)
+                    let newDeck = Deck(image: Image("lamp"), title: deckName, cards: [newCard])
+                    onSave(newDeck)
+                    dismiss()
                 }
+                .disabled(deckName.isEmpty || frontText.isEmpty || backText.isEmpty)
             }
         }
         .padding()
@@ -48,8 +101,7 @@ struct LLFirstCardView: View {
 }
 
 #Preview {
-    LLFirstCardView(card: Card(front: "Front Side", back: "Back Side")) { newCard in
-        print("Card saved: \(newCard.front) / \(newCard.back)")
+    LLFirstCardView(card: Card(front: "Front Text", back: "Back Text")) { newDeck in
+        print("Deck created: \(newDeck.title), with card: \(newDeck.cards.first?.front ?? "") / \(newDeck.cards.first?.back ?? "")")
     }
 }
-    

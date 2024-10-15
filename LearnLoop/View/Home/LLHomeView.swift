@@ -78,12 +78,11 @@ struct LLHomeView: View {
                         Spacer()
                         ZStack {
                             if !isTitleEditing {
-                                NavigationLink(destination: LLFirstCardView(card: Card(front: "Front", back: "Back"),
-                                                                            onSave: { newCard in
-                                    addFirstCardToNewDeck(newCard)
-                                }
-                                ), isActive: $navigateToFirstCard
-                                ){
+                                NavigationLink(destination: LLFirstCardView(card: Card(front: "Front",
+                                                                                       back: "Back"),
+                                                                            onSave: { newDeck in
+                                    addNewDeck(newDeck)
+                                }), isActive: $navigateToFirstCard) {
                                     EmptyView()
                                 }
                                 
@@ -123,13 +122,8 @@ struct LLHomeView: View {
         }
     }
     
-    private func addFirstCardToNewDeck(_ newCard: Card) {
-        let newDeck = Deck(image: Image("lamp"), title: "New Deck \(decks.count + 1)", cards: [newCard])
+    private func addNewDeck(_ newDeck: Deck) {
         decks.append(newDeck)
-        
-        withAnimation(.easeInOut(duration: 0.3)) {
-            showItems = false
-        }
     }
     
     private func toggleEditing() {
