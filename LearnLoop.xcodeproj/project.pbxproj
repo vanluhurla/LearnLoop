@@ -17,6 +17,7 @@
 		03CEFF612C516FA5003A5A1C /* LearnLoopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF602C516FA5003A5A1C /* LearnLoopUITests.swift */; };
 		03CEFF632C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF622C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift */; };
 		03D157832C5A74DF00C9602C /* LLHomeDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */; };
+		03DEC5AE2CCAA8B9003605AC /* LLHomeViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DEC5AD2CCAA8B9003605AC /* LLHomeViewButton.swift */; };
 		03F76C812C63B999005C4097 /* LLFirstCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76C802C63B998005C4097 /* LLFirstCardView.swift */; };
 		03F76C852C63BB3C005C4097 /* HomeDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76C842C63BB3C005C4097 /* HomeDeck.swift */; };
 		03F76C872C63BD18005C4097 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76C862C63BD18005C4097 /* Card.swift */; };
@@ -53,6 +54,7 @@
 		03CEFF602C516FA5003A5A1C /* LearnLoopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLoopUITests.swift; sourceTree = "<group>"; };
 		03CEFF622C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLoopUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeDeckCell.swift; sourceTree = "<group>"; };
+		03DEC5AD2CCAA8B9003605AC /* LLHomeViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeViewButton.swift; sourceTree = "<group>"; };
 		03F76C802C63B998005C4097 /* LLFirstCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLFirstCardView.swift; sourceTree = "<group>"; };
 		03F76C842C63BB3C005C4097 /* HomeDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDeck.swift; sourceTree = "<group>"; };
 		03F76C862C63BD18005C4097 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		03D157852C5A87F100C9602C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				03DEC5AD2CCAA8B9003605AC /* LLHomeViewButton.swift */,
 				03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */,
 				03CEFF472C516FA0003A5A1C /* LLHomeView.swift */,
 			);
@@ -315,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03DEC5AE2CCAA8B9003605AC /* LLHomeViewButton.swift in Sources */,
 				03C24FF42CB8224D0098A1A5 /* LLFinalCardView.swift in Sources */,
 				03F76C852C63BB3C005C4097 /* HomeDeck.swift in Sources */,
 				03F76C812C63B999005C4097 /* LLFirstCardView.swift in Sources */,
