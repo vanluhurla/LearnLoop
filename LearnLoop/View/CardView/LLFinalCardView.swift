@@ -9,11 +9,23 @@ import SwiftUI
 
 struct LLFinalCardView: View {
     
+    var deck: Deck
+
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Front: \(deck.cards.first?.front ?? "No card available")")
+                .font(.title)
+                .padding()
+            
+            Text("Back: \(deck.cards.first?.back ?? "No card available")")
+                .font(.title)
+                .padding()
+        }
+        .navigationTitle(deck.title)
     }
 }
 
 #Preview {
-    LLFinalCardView()
+    LLFinalCardView(deck: Deck(image: Image("lamp"), title: "Simple Deck", cards: [Card(front: "Front", back: "Back")]))
 }
