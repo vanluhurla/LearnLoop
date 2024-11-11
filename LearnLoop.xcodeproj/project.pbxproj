@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		037E67FB2C6E57B900F1CF83 /* LLColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E67FA2C6E57B900F1CF83 /* LLColours.swift */; };
+		03AA8C932CDA883700B8A850 /* StatusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA8C922CDA883700B8A850 /* StatusButton.swift */; };
 		03B06E6C2CD130CD006D7474 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B06E6B2CD130CD006D7474 /* CardViewCell.swift */; };
 		03C24FF42CB8224D0098A1A5 /* LLFinalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C24FF32CB8224D0098A1A5 /* LLFinalCardView.swift */; };
 		03CEFF462C516FA0003A5A1C /* LearnLoopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF452C516FA0003A5A1C /* LearnLoopApp.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		037E67FA2C6E57B900F1CF83 /* LLColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLColours.swift; sourceTree = "<group>"; };
+		03AA8C922CDA883700B8A850 /* StatusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusButton.swift; sourceTree = "<group>"; };
 		03B06E6B2CD130CD006D7474 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		03C24FF32CB8224D0098A1A5 /* LLFinalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLFinalCardView.swift; sourceTree = "<group>"; };
 		03CEFF422C516FA0003A5A1C /* LearnLoop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnLoop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +95,24 @@
 				037E67FA2C6E57B900F1CF83 /* LLColours.swift */,
 			);
 			path = Design;
+			sourceTree = "<group>";
+		};
+		03AA8C902CDA876100B8A850 /* CardCreation */ = {
+			isa = PBXGroup;
+			children = (
+				03F76C802C63B998005C4097 /* LLFirstCardView.swift */,
+			);
+			path = CardCreation;
+			sourceTree = "<group>";
+		};
+		03AA8C912CDA878B00B8A850 /* FinalCard */ = {
+			isa = PBXGroup;
+			children = (
+				03B06E6B2CD130CD006D7474 /* CardViewCell.swift */,
+				03AA8C922CDA883700B8A850 /* StatusButton.swift */,
+				03C24FF32CB8224D0098A1A5 /* LLFinalCardView.swift */,
+			);
+			path = FinalCard;
 			sourceTree = "<group>";
 		};
 		03CEFF392C516FA0003A5A1C = {
@@ -157,7 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				03D157852C5A87F100C9602C /* Home */,
-				03F76C782C62855D005C4097 /* CardView */,
+				03F76C782C62855D005C4097 /* CardsView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -172,14 +192,13 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		03F76C782C62855D005C4097 /* CardView */ = {
+		03F76C782C62855D005C4097 /* CardsView */ = {
 			isa = PBXGroup;
 			children = (
-				03B06E6B2CD130CD006D7474 /* CardViewCell.swift */,
-				03F76C802C63B998005C4097 /* LLFirstCardView.swift */,
-				03C24FF32CB8224D0098A1A5 /* LLFinalCardView.swift */,
+				03AA8C902CDA876100B8A850 /* CardCreation */,
+				03AA8C912CDA878B00B8A850 /* FinalCard */,
 			);
-			path = CardView;
+			path = CardsView;
 			sourceTree = "<group>";
 		};
 		03F76C822C63BAA3005C4097 /* Model */ = {
@@ -321,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03AA8C932CDA883700B8A850 /* StatusButton.swift in Sources */,
 				03DEC5AE2CCAA8B9003605AC /* LLHomeViewButton.swift in Sources */,
 				03C24FF42CB8224D0098A1A5 /* LLFinalCardView.swift in Sources */,
 				03B06E6C2CD130CD006D7474 /* CardViewCell.swift in Sources */,

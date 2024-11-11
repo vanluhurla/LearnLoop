@@ -7,49 +7,25 @@
 
 import SwiftUI
 
+enum LLHomeViewDestination: Hashable {
+    case firstCard
+}
+
 struct LLHomeView: View {
     
     @State var decks: [Deck] = []
-    @State var navigateToFirstCard: Bool = false
     @State var isEditing: Bool = false
     @State var isTitleEditing: Bool = false
     @State var showButtons: Bool = false
+    @State private var selectedDestination: LLHomeViewDestination? = nil  // Track the destination
     
-    let screen =  UIScreen.main.bounds
+    let screen = UIScreen.main.bounds
     
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottomTrailing) {
-                List {
-                    ForEach($decks) { $deck in
-                        Group {
-                            if isEditing {
-                                LLHomeDeckCell(deck: $deck, isEditing: isEditing)
-                                    .onTapGesture {
-                                        withAnimation {     
-                                            isTitleEditing = true
-                                            showButtons = false
-                                        }
-                                    }
-                                    .onDisappear {
-                                        isTitleEditing = false
-                                    }
-                            } else {
-                                NavigationLink(destination: LLFinalCardView(deck: deck)) {
-                                    LLHomeDeckCell(deck: $deck, isEditing: isEditing)
-                                }
-                                .buttonStyle(PlainButtonStyle())
-                                .padding(10)
-                            }
-                        }
-                        .padding(.vertical, 5)
-                        .background(Color.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 14))
-                        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-                        .listRowSeparator(.hidden)
-                        .listRowBackground(Color.clear)
-                    }
-                    .onDelete(perform: deleteDeck)
+                VStack {
+                    deckList
                 }
                 .navigationTitle("My Decks")
                 .listStyle(PlainListStyle())
@@ -58,27 +34,15 @@ struct LLHomeView: View {
                 .padding(.bottom, -10)
                 
                 VStack {
-                    
                     Spacer()
                     
                     HStack {
-                        
                         Spacer()
                         
                         ZStack {
                             if !isTitleEditing {
-                                NavigationLink(
-                                    destination: LLFirstCardView(onSave: { newDeck in
-                                        addNewDeck(newDeck)
-                                    }),
-                                    isActive: $navigateToFirstCard
-                                ) {
-                                    EmptyView()
-                                }
-                                
-                                Button(action: {
-                                    navigateToFirstCard = true
-                                }) {
+                                // Orange Button using NavigationLink with `value`
+                                NavigationLink(value: LLHomeViewDestination.firstCard) {
                                     LLHomeViewButton(colour: Color.orange.opacity(0.5),
                                                      iconName: "rectangle.stack.badge.plus")
                                 }
@@ -86,8 +50,10 @@ struct LLHomeView: View {
                                 .animation(showButtons ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.3), value: showButtons)
                             }
                             
+                            // Edit button
                             Button(action: toggleEditing) {
-                                LLHomeViewButton(colour: decks.isEmpty ? Color.gray.opacity(0.5) : Color.green.opacity(0.5), iconName: isEditing ? "checkmark.circle" : "pencil")
+                                LLHomeViewButton(colour: decks.isEmpty ? Color.gray.opacity(0.5) : Color.green.opacity(0.5),
+                                                 iconName: isEditing ? "checkmark.circle" : "pencil")
                             }
                             .offset(y: showButtons ? -70 : 0)
                             .animation(showButtons ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.3), value: showButtons)
@@ -110,6 +76,51 @@ struct LLHomeView: View {
                 .frame(width: screen.width)
             }
             .background(Color(UIColor.systemGray6).edgesIgnoringSafeArea(.all))
+            // Define the destination view using `navigationDestination`
+            .navigationDestination(for: LLHomeViewDestination.self) { destination in
+                switch destination {
+                case .firstCard:
+                    LLFirstCardView(onSave: { newDeck in
+                        addNewDeck(newDeck)
+                    })
+                }
+            }
+        }
+    }
+    
+    private var deckList: some View {
+        VStack {
+            List {
+                ForEach($decks) { $deck in
+                    Group {
+                        if isEditing {
+                            LLHomeDeckCell(deck: $deck, isEditing: isEditing)
+                                .onTapGesture {
+                                    withAnimation {
+                                        isTitleEditing = true
+                                        showButtons = false
+                                    }
+                                }
+                                .onDisappear {
+                                    isTitleEditing = false
+                                }
+                        } else {
+                            NavigationLink(destination: LLFinalCardView(deck: deck)) {
+                                LLHomeDeckCell(deck: $deck, isEditing: isEditing)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            .padding(10)
+                        }
+                    }
+                    .padding(.vertical, 5)
+                    .background(Color.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 14))
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                }
+                .onDelete(perform: deleteDeck)
+            }
         }
     }
     
@@ -132,8 +143,3 @@ struct LLHomeView: View {
 #Preview {
     LLHomeView()
 }
-
-
-
-
-
