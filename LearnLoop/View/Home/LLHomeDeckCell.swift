@@ -14,12 +14,6 @@ struct LLHomeDeckCell: View {
     
     var body: some View {
         HStack {
-            deck.image?
-                .resizable()
-                .scaledToFit()
-                .frame(width: 60, height: 60)
-                .padding()
-            
             if isEditing {
                 TextField("Deck Title", text: $deck.title)
                     .fontWeight(.semibold)
@@ -38,11 +32,13 @@ struct LLHomeDeckCell: View {
         .padding()
     }
 }
-struct LLHomeDeckCell_Previews: PreviewProvider { 
+
+struct LLHomeDeckCell_Previews: PreviewProvider {
     static var previews: some View {
-        let sampleImage = Image("lamp")
-        let sampleDeck = Deck(image: sampleImage, title: "Sample Deck", cards: [Card(front: "Front", back: "Back")])
-        LLHomeDeckCell(deck: .constant(sampleDeck), isEditing: false)
+        let sampleDeck = Deck(title: "Sample Deck")
+        sampleDeck.cards = [Card(front: "Front", back: "Back")]
+        
+        return LLHomeDeckCell(deck: .constant(sampleDeck), isEditing: false)
             .previewLayout(.sizeThatFits)
     }
 }
