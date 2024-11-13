@@ -7,11 +7,15 @@
 
 import SwiftUI
 
+
 @main
-struct LearnLoopApp: App {
+struct MyApp: App {
+    @StateObject private var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
             LLHomeView()
+                .environment(\.modelContext, dataController.container.mainContext)
         }
     }
 }

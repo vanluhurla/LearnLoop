@@ -6,18 +6,21 @@
 //
 
 import SwiftUI
+import SwiftData
 
 enum LLHomeViewDestination: Hashable {
     case firstCard
 }
 
 struct LLHomeView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query var decks: [Deck]
     
-    @State var decks: [Deck] = []
+    @State private var localDecks: [Deck] = []  // Local state to hold mutable deck array
     @State var isEditing: Bool = false
     @State var isTitleEditing: Bool = false
     @State var showButtons: Bool = false
-    @State private var selectedDestination: LLHomeViewDestination? = nil  // Track the destination
+    @State private var selectedDestination: LLHomeViewDestination? = nil
     
     let screen = UIScreen.main.bounds
     
@@ -86,12 +89,16 @@ struct LLHomeView: View {
                 }
             }
         }
+        .onAppear {
+            // Populate localDecks with data from @Query
+            localDecks = decks
+        }
     }
     
     private var deckList: some View {
         VStack {
             List {
-                ForEach($decks) { $deck in
+                ForEach($localDecks) { $deck in  // Use the localDecks for editable binding
                     Group {
                         if isEditing {
                             LLHomeDeckCell(deck: $deck, isEditing: isEditing)
@@ -132,11 +139,25 @@ struct LLHomeView: View {
     }
     
     private func addNewDeck(_ newDeck: Deck) {
-        decks.append(newDeck)
+        modelContext.insert(newDeck)
+        
+        do {
+            try modelContext.save()
+            print("Deck saved successfully!")
+        } catch {
+            print("Error saving deck: \(error.localizedDescription)")
+        }
+        
+        
+        localDecks.append(newDeck)
     }
     
     private func deleteDeck(at offSets: IndexSet) {
-        decks.remove(atOffsets: offSets)
+        for index in offSets {
+            let deckToDelete = localDecks[index]
+            modelContext.delete(deckToDelete)
+        }
+        localDecks.remove(atOffsets: offSets)  
     }
 }
 

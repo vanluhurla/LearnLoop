@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct LLFirstCardView: View {
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
     
     @State private var deckName: String = ""
     @State private var frontText: String = ""
     @State private var backText: String = ""
-    
     
     var onSave: (Deck) -> Void
     
@@ -26,7 +26,6 @@ struct LLFirstCardView: View {
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(10)
                     .padding(.bottom, 20)
-
                 
                 Text("Front Card")
                     .font(.headline)
@@ -52,8 +51,21 @@ struct LLFirstCardView: View {
                 
                 Button(action: {
                     let newCard = Card(front: frontText, back: backText)
-                    let newDeck = Deck(image: Image("lamp"), title: deckName, cards: [newCard])
+                    let newDeck = Deck(title: deckName)
+                    newDeck.cards.append(newCard)
+                    
+                    modelContext.insert(newDeck)
+                    
+                    do {
+                        try modelContext.save()
+                        print("Deck saved successfully!")
+                    } catch {
+                        print("Error saving deck: \(error.localizedDescription)")
+                    }
+                    
+                    
                     onSave(newDeck)
+                    
                     dismiss()
                 }) {
                     Text("Save")
@@ -63,7 +75,6 @@ struct LLFirstCardView: View {
                         .frame(maxWidth: .infinity)
                         .background(deckName.isEmpty || frontText.isEmpty || backText.isEmpty ? Color.gray : Color.blue)
                         .foregroundStyle(Color.white)
-                    
                 }
                 .disabled(deckName.isEmpty || frontText.isEmpty || backText.isEmpty)
                 .padding()
@@ -75,7 +86,6 @@ struct LLFirstCardView: View {
             hideKeyboard()
         }
     }
-
 }
 
 #Preview {
@@ -89,5 +99,3 @@ extension View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
-
-

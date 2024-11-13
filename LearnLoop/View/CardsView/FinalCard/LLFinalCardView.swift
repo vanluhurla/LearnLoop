@@ -13,7 +13,7 @@ struct LLFinalCardView: View {
     // MARK: Card Data
     @State private var isFlipped: Bool = false
     @State private var angle: Double = 0
-    @State private var showBackText: Bool = false // Flag para controlar a exibição do texto do verso
+    @State private var showBackText: Bool = false 
     
     @State private var frontText: String
     @State private var backText: String
@@ -38,7 +38,6 @@ struct LLFinalCardView: View {
                 Spacer()
                 
                 Button(action: {
-                    // Ação para adicionar um novo card ou outra funcionalidade
                 }) {
                     ZStack {
                         Circle()
@@ -104,14 +103,14 @@ struct LLFinalCardView: View {
     private func nextCard() {
         currentIndex = (currentIndex + 1) % deck.cards.count
         isFlipped = false
-        showBackText = false // Esconde o texto antes de mostrar o novo card
+        showBackText = false
         frontText = deck.cards[currentIndex].front
         backText = deck.cards[currentIndex].back
     }
 }
 
 #Preview {
-    LLFinalCardView(deck: Deck(image: Image("lamp"), title: "Simple Deck", cards: [Card(front: "Front", back: "Back")]))
+    LLFinalCardView(deck: Deck(title: "Simple Deck"))
 }
 
 

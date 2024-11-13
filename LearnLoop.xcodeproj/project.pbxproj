@@ -20,6 +20,7 @@
 		03CEFF632C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF622C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift */; };
 		03D157832C5A74DF00C9602C /* LLHomeDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */; };
 		03DEC5AE2CCAA8B9003605AC /* LLHomeViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DEC5AD2CCAA8B9003605AC /* LLHomeViewButton.swift */; };
+		03E452D02CE515B200F7BB8D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E452CF2CE515B200F7BB8D /* DataController.swift */; };
 		03F76C812C63B999005C4097 /* LLFirstCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76C802C63B998005C4097 /* LLFirstCardView.swift */; };
 		03F76C852C63BB3C005C4097 /* HomeDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76C842C63BB3C005C4097 /* HomeDeck.swift */; };
 		03F76C872C63BD18005C4097 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76C862C63BD18005C4097 /* Card.swift */; };
@@ -59,6 +60,7 @@
 		03CEFF622C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLoopUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeDeckCell.swift; sourceTree = "<group>"; };
 		03DEC5AD2CCAA8B9003605AC /* LLHomeViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeViewButton.swift; sourceTree = "<group>"; };
+		03E452CF2CE515B200F7BB8D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		03F76C802C63B998005C4097 /* LLFirstCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLFirstCardView.swift; sourceTree = "<group>"; };
 		03F76C842C63BB3C005C4097 /* HomeDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDeck.swift; sourceTree = "<group>"; };
 		03F76C862C63BD18005C4097 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				03CEFF452C516FA0003A5A1C /* LearnLoopApp.swift */,
+				03E452CF2CE515B200F7BB8D /* DataController.swift */,
 				03F76C822C63BAA3005C4097 /* Model */,
 				03D157842C5A87DB00C9602C /* View */,
 				03CEFF492C516FA4003A5A1C /* Assets.xcassets */,
@@ -341,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03AA8C932CDA883700B8A850 /* StatusButton.swift in Sources */,
+				03E452D02CE515B200F7BB8D /* DataController.swift in Sources */,
 				03DEC5AE2CCAA8B9003605AC /* LLHomeViewButton.swift in Sources */,
 				03C24FF42CB8224D0098A1A5 /* LLFinalCardView.swift in Sources */,
 				03B06E6C2CD130CD006D7474 /* CardViewCell.swift in Sources */,

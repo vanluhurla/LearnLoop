@@ -6,10 +6,20 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct Deck: Identifiable, Equatable {
+@Model
+class Deck: Identifiable, Equatable {
+    
     var id = UUID()
-    var image: Image?
     var title: String
-    var cards: [Card] = []
+    @Relationship(deleteRule: .cascade) var cards: [Card] = []
+    
+    init(title: String) {
+        self.title = title
+    }
+    
+    static func ==(lhs: Deck, rhs: Deck) -> Bool {
+        lhs.id == rhs.id
+    }
 }
