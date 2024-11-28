@@ -11,7 +11,6 @@ struct StatusButton: View {
 
     var color: Color
     var iconName: String
-//    var action: () -> Void
     
     var body: some View {
         

@@ -8,5 +8,8 @@
 import SwiftUI
 
 extension Color {
-    static let homeColour = Color("homeViewColour")
+    static let backgroundColor = Color("backgroundColour")
+    static let mainFontColor = Color("mainFontColour")
+    static let backgroundCellColor = Color("backgroundCellColour")
+    static let flashcardColor = Color("flashcardColour")
 }
