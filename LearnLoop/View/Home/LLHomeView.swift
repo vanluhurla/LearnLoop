@@ -16,7 +16,7 @@ struct LLHomeView: View {
     @Environment(\.modelContext) private var modelContext
     @Query var decks: [Deck]
     
-    @State private var localDecks: [Deck] = []  // Local state to hold mutable deck array
+    @State private var localDecks: [Deck] = []
     @State var isEditing: Bool = false
     @State var isTitleEditing: Bool = false
     @State var showButtons: Bool = false
@@ -32,7 +32,7 @@ struct LLHomeView: View {
                 }
                 .navigationTitle("My Decks")
                 .listStyle(PlainListStyle())
-                .background(Color(UIColor.systemGray6))
+                .background(Color.backgroundColour)
                 .scrollContentBackground(.hidden)
                 .padding(.bottom, -10)
                 
@@ -44,7 +44,6 @@ struct LLHomeView: View {
                         
                         ZStack {
                             if !isTitleEditing {
-                                // Orange Button using NavigationLink with `value`
                                 NavigationLink(value: LLHomeViewDestination.firstCard) {
                                     LLHomeViewButton(colour: Color.orange.opacity(0.5),
                                                      iconName: "rectangle.stack.badge.plus")
@@ -53,7 +52,6 @@ struct LLHomeView: View {
                                 .animation(showButtons ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.3), value: showButtons)
                             }
                             
-                            // Edit button
                             Button(action: toggleEditing) {
                                 LLHomeViewButton(colour: decks.isEmpty ? Color.gray.opacity(0.5) : Color.green.opacity(0.5),
                                                  iconName: isEditing ? "checkmark.circle" : "pencil")
@@ -79,7 +77,6 @@ struct LLHomeView: View {
                 .frame(width: screen.width)
             }
             .background(Color(UIColor.systemGray6).edgesIgnoringSafeArea(.all))
-            // Define the destination view using `navigationDestination`
             .navigationDestination(for: LLHomeViewDestination.self) { destination in
                 switch destination {
                 case .firstCard:
@@ -90,7 +87,6 @@ struct LLHomeView: View {
             }
         }
         .onAppear {
-            // Populate localDecks with data from @Query
             localDecks = decks
         }
     }
@@ -98,7 +94,7 @@ struct LLHomeView: View {
     private var deckList: some View {
         VStack {
             List {
-                ForEach($localDecks) { $deck in  // Use the localDecks for editable binding
+                ForEach($localDecks) { $deck in
                     Group {
                         if isEditing {
                             LLHomeDeckCell(deck: $deck, isEditing: isEditing)
@@ -120,9 +116,9 @@ struct LLHomeView: View {
                         }
                     }
                     .padding(.vertical, 5)
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 14))
-                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                    .background(Color.backgroundCellColour)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .shadow(color: Color.gray.opacity(0.1), radius: 1, x: 0, y: 1)
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.clear)
                 }
@@ -157,7 +153,7 @@ struct LLHomeView: View {
             let deckToDelete = localDecks[index]
             modelContext.delete(deckToDelete)
         }
-        localDecks.remove(atOffsets: offSets)  
+        localDecks.remove(atOffsets: offSets)
     }
 }
 

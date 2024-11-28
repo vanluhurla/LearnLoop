@@ -16,18 +16,22 @@ struct LLHomeDeckCell: View {
         HStack {
             if isEditing {
                 TextField("Deck Title", text: $deck.title)
+                    .font(.largeTitle)
                     .fontWeight(.semibold)
+                    .foregroundStyle(Color.mainFontColour)
                     .lineLimit(2)
                     .minimumScaleFactor(0.5)
             } else {
                 Text(deck.title)
+                    .font(.largeTitle)
                     .fontWeight(.semibold)
+                    .foregroundStyle(Color.mainFontColour)
                     .lineLimit(2)
                     .minimumScaleFactor(0.5)
             }
         }
         .padding(.vertical, isEditing ? 10 : 0)
-        .background(Color.clear)
+        .background(Color.backgroundCellColor)
         .contentShape(Rectangle())
         .padding()
     }

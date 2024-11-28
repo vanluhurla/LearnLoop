@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		037E67FB2C6E57B900F1CF83 /* LLColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E67FA2C6E57B900F1CF83 /* LLColours.swift */; };
+		038D19852CF0A00E007D852C /* SingleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D19842CF0A00E007D852C /* SingleCardView.swift */; };
+		038D19872CF0A36B007D852C /* CurrentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D19862CF0A36B007D852C /* CurrentCardView.swift */; };
+		038D19892CF0A57C007D852C /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D19882CF0A57C007D852C /* CardStackView.swift */; };
+		038D19E42CF5E44D007D852C /* SmallCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D19E32CF5E44D007D852C /* SmallCardView.swift */; };
 		03AA8C932CDA883700B8A850 /* StatusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA8C922CDA883700B8A850 /* StatusButton.swift */; };
 		03B06E6C2CD130CD006D7474 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B06E6B2CD130CD006D7474 /* CardViewCell.swift */; };
 		03C24FF42CB8224D0098A1A5 /* LLFinalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C24FF32CB8224D0098A1A5 /* LLFinalCardView.swift */; };
@@ -21,6 +25,8 @@
 		03D157832C5A74DF00C9602C /* LLHomeDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */; };
 		03DEC5AE2CCAA8B9003605AC /* LLHomeViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DEC5AD2CCAA8B9003605AC /* LLHomeViewButton.swift */; };
 		03E452D02CE515B200F7BB8D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E452CF2CE515B200F7BB8D /* DataController.swift */; };
+		03E452D82CE79ED900F7BB8D /* CounterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E452D72CE79ED900F7BB8D /* CounterViewCell.swift */; };
+		03E452DA2CE7A47700F7BB8D /* AddCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E452D92CE7A47700F7BB8D /* AddCardButton.swift */; };
 		03F76C812C63B999005C4097 /* LLFirstCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76C802C63B998005C4097 /* LLFirstCardView.swift */; };
 		03F76C852C63BB3C005C4097 /* HomeDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76C842C63BB3C005C4097 /* HomeDeck.swift */; };
 		03F76C872C63BD18005C4097 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76C862C63BD18005C4097 /* Card.swift */; };
@@ -45,6 +51,10 @@
 
 /* Begin PBXFileReference section */
 		037E67FA2C6E57B900F1CF83 /* LLColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLColours.swift; sourceTree = "<group>"; };
+		038D19842CF0A00E007D852C /* SingleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCardView.swift; sourceTree = "<group>"; };
+		038D19862CF0A36B007D852C /* CurrentCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCardView.swift; sourceTree = "<group>"; };
+		038D19882CF0A57C007D852C /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
+		038D19E32CF5E44D007D852C /* SmallCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCardView.swift; sourceTree = "<group>"; };
 		03AA8C922CDA883700B8A850 /* StatusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusButton.swift; sourceTree = "<group>"; };
 		03B06E6B2CD130CD006D7474 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		03C24FF32CB8224D0098A1A5 /* LLFinalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLFinalCardView.swift; sourceTree = "<group>"; };
@@ -61,6 +71,8 @@
 		03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeDeckCell.swift; sourceTree = "<group>"; };
 		03DEC5AD2CCAA8B9003605AC /* LLHomeViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeViewButton.swift; sourceTree = "<group>"; };
 		03E452CF2CE515B200F7BB8D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		03E452D72CE79ED900F7BB8D /* CounterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewCell.swift; sourceTree = "<group>"; };
+		03E452D92CE7A47700F7BB8D /* AddCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardButton.swift; sourceTree = "<group>"; };
 		03F76C802C63B998005C4097 /* LLFirstCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLFirstCardView.swift; sourceTree = "<group>"; };
 		03F76C842C63BB3C005C4097 /* HomeDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDeck.swift; sourceTree = "<group>"; };
 		03F76C862C63BD18005C4097 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -99,9 +111,21 @@
 			path = Design;
 			sourceTree = "<group>";
 		};
+		038D19832CF09EB1007D852C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				03AA8C922CDA883700B8A850 /* StatusButton.swift */,
+				03B06E6B2CD130CD006D7474 /* CardViewCell.swift */,
+				03E452D72CE79ED900F7BB8D /* CounterViewCell.swift */,
+				03E452D92CE7A47700F7BB8D /* AddCardButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		03AA8C902CDA876100B8A850 /* CardCreation */ = {
 			isa = PBXGroup;
 			children = (
+				038D19E32CF5E44D007D852C /* SmallCardView.swift */,
 				03F76C802C63B998005C4097 /* LLFirstCardView.swift */,
 			);
 			path = CardCreation;
@@ -110,8 +134,10 @@
 		03AA8C912CDA878B00B8A850 /* FinalCard */ = {
 			isa = PBXGroup;
 			children = (
-				03B06E6B2CD130CD006D7474 /* CardViewCell.swift */,
-				03AA8C922CDA883700B8A850 /* StatusButton.swift */,
+				038D19832CF09EB1007D852C /* UI */,
+				038D19842CF0A00E007D852C /* SingleCardView.swift */,
+				038D19862CF0A36B007D852C /* CurrentCardView.swift */,
+				038D19882CF0A57C007D852C /* CardStackView.swift */,
 				03C24FF32CB8224D0098A1A5 /* LLFinalCardView.swift */,
 			);
 			path = FinalCard;
@@ -277,7 +303,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					03CEFF412C516FA0003A5A1C = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -344,11 +370,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				03AA8C932CDA883700B8A850 /* StatusButton.swift in Sources */,
+				038D19892CF0A57C007D852C /* CardStackView.swift in Sources */,
 				03E452D02CE515B200F7BB8D /* DataController.swift in Sources */,
 				03DEC5AE2CCAA8B9003605AC /* LLHomeViewButton.swift in Sources */,
+				03E452D82CE79ED900F7BB8D /* CounterViewCell.swift in Sources */,
 				03C24FF42CB8224D0098A1A5 /* LLFinalCardView.swift in Sources */,
+				038D19E42CF5E44D007D852C /* SmallCardView.swift in Sources */,
+				03E452DA2CE7A47700F7BB8D /* AddCardButton.swift in Sources */,
 				03B06E6C2CD130CD006D7474 /* CardViewCell.swift in Sources */,
 				03F76C852C63BB3C005C4097 /* HomeDeck.swift in Sources */,
+				038D19872CF0A36B007D852C /* CurrentCardView.swift in Sources */,
+				038D19852CF0A00E007D852C /* SingleCardView.swift in Sources */,
 				03F76C812C63B999005C4097 /* LLFirstCardView.swift in Sources */,
 				03D157832C5A74DF00C9602C /* LLHomeDeckCell.swift in Sources */,
 				03CEFF482C516FA0003A5A1C /* LLHomeView.swift in Sources */,
@@ -515,6 +547,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LearnLoop/Preview Content\"";
@@ -533,6 +566,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vanluhurla.LearnLoop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -544,6 +578,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LearnLoop/Preview Content\"";
@@ -562,6 +597,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vanluhurla.LearnLoop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -571,7 +607,6 @@
 		03CEFF6A2C516FA5003A5A1C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -591,7 +626,6 @@
 		03CEFF6B2C516FA5003A5A1C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -611,7 +645,6 @@
 		03CEFF6D2C516FA5003A5A1C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 68W4AKL2MS;
@@ -629,7 +662,6 @@
 		03CEFF6E2C516FA5003A5A1C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 68W4AKL2MS;
