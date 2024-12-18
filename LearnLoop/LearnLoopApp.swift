@@ -14,8 +14,11 @@ struct MyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LLHomeView()
-                .environment(\.modelContext, dataController.container.mainContext)
+            LLHomeView(
+                viewModel: LLHomeViewModel(
+                    modelContext: dataController.container.mainContext, decks: []))
+            .environment(\.modelContext, dataController.container.mainContext)
+
         }
     }
 }
