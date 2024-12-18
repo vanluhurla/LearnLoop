@@ -16,8 +16,6 @@ struct CardStackView: View {
     @Binding var isFlipped: Bool
     @Binding var cardOffset: CGFloat
     
-//    var onAddCard: (() -> Void)?
-    
     var body: some View {
         ZStack {
             if cards.isEmpty {
@@ -40,7 +38,6 @@ struct CardStackView: View {
                     isFlipped: $isFlipped
                 )
             } else {
-                // Safely iterate over the cards with valid indices
                 ForEach(cards, id: \.id) { card in
                     if card.id != cards[currentIndex].id {
                         let index = cards.firstIndex(where: { $0.id == card.id })!
@@ -51,14 +48,10 @@ struct CardStackView: View {
                             contentCardText: card.front
                         )
                         .offset(y: offset)
-//                        .scaleEffect(1 - (CGFloat(index - currentIndex) * 0.05))
-//                        .zIndex(Double(index))
                     }
                 }
                 
-                // Safeguard: Ensure currentIndex is within bounds
                 if currentIndex >= 0 && currentIndex < cards.count {
-                    // Show the current card if the index is valid
                     CurrentCardView(
                         deck: deck,
                         card: cards[currentIndex],
@@ -67,7 +60,6 @@ struct CardStackView: View {
                         cardOffset: $cardOffset
                     )
                 } else {
-                    // Fallback: Show a message if the currentIndex is invalid
                     Text("Invalid current card index.")
                         .font(.headline)
                         .foregroundStyle(.red)

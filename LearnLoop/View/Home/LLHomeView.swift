@@ -8,25 +8,21 @@
 import SwiftUI
 import SwiftData
 
-enum LLHomeViewDestination: Hashable {
-    case firstCard
-}
-
 struct LLHomeView: View {
+    
     @Environment(\.modelContext) private var modelContext
     @Query var decks: [Deck]
+    @StateObject var viewModel: LLHomeViewModel
     
-    @State private var localDecks: [Deck] = []
-    @State var isEditing: Bool = false
-    @State var isTitleEditing: Bool = false
-    @State var showButtons: Bool = false
-    @State private var selectedDestination: LLHomeViewDestination? = nil
+    init(viewModel: LLHomeViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     let screen = UIScreen.main.bounds
     
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .bottomTrailing) {
+            ZStack() {
                 VStack {
                     deckList
                 }
@@ -43,27 +39,27 @@ struct LLHomeView: View {
                         Spacer()
                         
                         ZStack {
-                            if !isTitleEditing {
+                            if !viewModel.isTitleEditing {
                                 NavigationLink(value: LLHomeViewDestination.firstCard) {
                                     LLHomeViewButton(colour: Color.orange.opacity(0.5),
                                                      iconName: "rectangle.stack.badge.plus")
                                 }
-                                .offset(y: showButtons ? -140 : 0)
-                                .animation(showButtons ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.3), value: showButtons)
+                                .offset(y: viewModel.showButtons ? -140 : 0)
+                                .animation(viewModel.showButtons ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.3), value: viewModel.showButtons)
                             }
                             
-                            Button(action: toggleEditing) {
+                            Button(action: viewModel.toggleEditing) {
                                 LLHomeViewButton(colour: decks.isEmpty ? Color.gray.opacity(0.5) : Color.green.opacity(0.5),
-                                                 iconName: isEditing ? "checkmark.circle" : "pencil")
+                                                 iconName: viewModel.isEditing ? "checkmark.circle" : "pencil")
                             }
-                            .offset(y: showButtons ? -70 : 0)
-                            .animation(showButtons ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.3), value: showButtons)
+                            .offset(y: viewModel.showButtons ? -70 : 0)
+                            .animation(viewModel.showButtons ? .spring(response: 0.5, dampingFraction: 0.5) : .easeInOut(duration: 0.3), value: viewModel.showButtons)
                             .disabled(decks.isEmpty)
                             
-                            if !isTitleEditing {
+                            if !viewModel.isTitleEditing {
                                 Button(action: {
-                                    withAnimation(showButtons ? .spring(response: 0.5, dampingFraction: 0.5) : .easeIn(duration: 0.6)) {
-                                        showButtons.toggle()
+                                    withAnimation(viewModel.showButtons ? .spring(response: 0.5, dampingFraction: 0.5) : .easeIn(duration: 0.6)) {
+                                        viewModel.showButtons.toggle()
                                     }
                                 }) {
                                     LLHomeViewButton(colour: Color.blue, iconName: "plus")
@@ -81,35 +77,37 @@ struct LLHomeView: View {
                 switch destination {
                 case .firstCard:
                     LLFirstCardView(onSave: { newDeck in
-                        addNewDeck(newDeck)
+                        viewModel.addNewDeck(newDeck)
                     })
                 }
             }
         }
         .onAppear {
-            localDecks = decks
+            viewModel.decks = decks
         }
     }
     
     private var deckList: some View {
         VStack {
             List {
-                ForEach($localDecks) { $deck in
+                ForEach(viewModel.decks.indices, id: \.self) { index in
+                    let deck = viewModel.decks[index]
+                    
                     Group {
-                        if isEditing {
-                            LLHomeDeckCell(deck: $deck, isEditing: isEditing)
+                        if viewModel.isEditing {
+                            LLHomeDeckCell(deck: $viewModel.decks[index], isEditing: viewModel.isEditing)
                                 .onTapGesture {
                                     withAnimation {
-                                        isTitleEditing = true
-                                        showButtons = false
+                                        viewModel.isTitleEditing = true
+                                        viewModel.showButtons = false
                                     }
                                 }
                                 .onDisappear {
-                                    isTitleEditing = false
+                                    viewModel.isTitleEditing = false
                                 }
                         } else {
                             NavigationLink(destination: LLFinalCardView(deck: deck)) {
-                                LLHomeDeckCell(deck: $deck, isEditing: isEditing)
+                                LLHomeDeckCell(deck: $viewModel.decks[index], isEditing: viewModel.isEditing)
                             }
                             .buttonStyle(PlainButtonStyle())
                             .padding(10)
@@ -122,41 +120,14 @@ struct LLHomeView: View {
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.clear)
                 }
-                .onDelete(perform: deleteDeck)
+                .onDelete(perform: { indexSet in
+                    viewModel.deleteDeck(at: indexSet)
+                })
             }
         }
     }
-    
-    private func toggleEditing() {
-        withAnimation {
-            isEditing.toggle()
-            showButtons = false
-        }
-    }
-    
-    private func addNewDeck(_ newDeck: Deck) {
-        modelContext.insert(newDeck)
-        
-        do {
-            try modelContext.save()
-            print("Deck saved successfully!")
-        } catch {
-            print("Error saving deck: \(error.localizedDescription)")
-        }
-        
-        
-        localDecks.append(newDeck)
-    }
-    
-    private func deleteDeck(at offSets: IndexSet) {
-        for index in offSets {
-            let deckToDelete = localDecks[index]
-            modelContext.delete(deckToDelete)
-        }
-        localDecks.remove(atOffsets: offSets)
-    }
 }
 
-#Preview {
-    LLHomeView()
-}
+//#Preview {
+//    LLHomeView()
+//}
