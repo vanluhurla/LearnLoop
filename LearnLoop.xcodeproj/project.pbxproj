@@ -16,6 +16,7 @@
 		03B06E6C2CD130CD006D7474 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B06E6B2CD130CD006D7474 /* CardViewCell.swift */; };
 		03BA90D32D11CCA600FEDCAF /* LLHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BA90D22D11CCA600FEDCAF /* LLHomeViewModel.swift */; };
 		03BA90D52D12EABA00FEDCAF /* LLHomeViewDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BA90D42D12EABA00FEDCAF /* LLHomeViewDestination.swift */; };
+		03BA90F22D132DD100FEDCAF /* LLFirstCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BA90F12D132DD100FEDCAF /* LLFirstCardViewModel.swift */; };
 		03C24FF42CB8224D0098A1A5 /* LLFinalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C24FF32CB8224D0098A1A5 /* LLFinalCardView.swift */; };
 		03CEFF462C516FA0003A5A1C /* LearnLoopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF452C516FA0003A5A1C /* LearnLoopApp.swift */; };
 		03CEFF482C516FA0003A5A1C /* LLHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF472C516FA0003A5A1C /* LLHomeView.swift */; };
@@ -61,6 +62,7 @@
 		03B06E6B2CD130CD006D7474 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		03BA90D22D11CCA600FEDCAF /* LLHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeViewModel.swift; sourceTree = "<group>"; };
 		03BA90D42D12EABA00FEDCAF /* LLHomeViewDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeViewDestination.swift; sourceTree = "<group>"; };
+		03BA90F12D132DD100FEDCAF /* LLFirstCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLFirstCardViewModel.swift; sourceTree = "<group>"; };
 		03C24FF32CB8224D0098A1A5 /* LLFinalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLFinalCardView.swift; sourceTree = "<group>"; };
 		03CEFF422C516FA0003A5A1C /* LearnLoop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnLoop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03CEFF452C516FA0003A5A1C /* LearnLoopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLoopApp.swift; sourceTree = "<group>"; };
@@ -129,7 +131,8 @@
 		03AA8C902CDA876100B8A850 /* CardCreation */ = {
 			isa = PBXGroup;
 			children = (
-				038D19E32CF5E44D007D852C /* SmallCardView.swift */,
+				03BA90F02D13298E00FEDCAF /* UI */,
+				03BA90F12D132DD100FEDCAF /* LLFirstCardViewModel.swift */,
 				03F76C802C63B998005C4097 /* LLFirstCardView.swift */,
 			);
 			path = CardCreation;
@@ -145,6 +148,24 @@
 				03C24FF32CB8224D0098A1A5 /* LLFinalCardView.swift */,
 			);
 			path = FinalCard;
+			sourceTree = "<group>";
+		};
+		03BA90EF2D13297600FEDCAF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				03BA90D42D12EABA00FEDCAF /* LLHomeViewDestination.swift */,
+				03DEC5AD2CCAA8B9003605AC /* LLHomeViewButton.swift */,
+				03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		03BA90F02D13298E00FEDCAF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				038D19E32CF5E44D007D852C /* SmallCardView.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		03CEFF392C516FA0003A5A1C = {
@@ -218,9 +239,7 @@
 		03D157852C5A87F100C9602C /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				03BA90D42D12EABA00FEDCAF /* LLHomeViewDestination.swift */,
-				03DEC5AD2CCAA8B9003605AC /* LLHomeViewButton.swift */,
-				03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */,
+				03BA90EF2D13297600FEDCAF /* UI */,
 				03BA90D22D11CCA600FEDCAF /* LLHomeViewModel.swift */,
 				03CEFF472C516FA0003A5A1C /* LLHomeView.swift */,
 			);
@@ -379,6 +398,7 @@
 				03AA8C932CDA883700B8A850 /* StatusButton.swift in Sources */,
 				038D19892CF0A57C007D852C /* CardStackView.swift in Sources */,
 				03E452D02CE515B200F7BB8D /* DataController.swift in Sources */,
+				03BA90F22D132DD100FEDCAF /* LLFirstCardViewModel.swift in Sources */,
 				03DEC5AE2CCAA8B9003605AC /* LLHomeViewButton.swift in Sources */,
 				03E452D82CE79ED900F7BB8D /* CounterViewCell.swift in Sources */,
 				03C24FF42CB8224D0098A1A5 /* LLFinalCardView.swift in Sources */,

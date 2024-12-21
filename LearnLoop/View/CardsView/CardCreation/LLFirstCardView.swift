@@ -12,13 +12,17 @@ struct LLFirstCardView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
     
-    @State private var deckName: String = ""
-    @State private var frontText: String = ""
-    @State private var backText: String = ""
+    @StateObject var viewModel: LLFirstCardViewModel
     
-    var onSave: ((Deck) -> Void)?
     var deck: Deck?
-    var onAddCard: ((Card) -> Void)?
+    
+    init(modelContext: ModelContext, onAddCard: ((Card) -> Void)? = nil, onSave: ((Deck) -> Void)?) {
+        _viewModel = StateObject(wrappedValue: LLFirstCardViewModel(
+            modelContext: modelContext,
+            onAddCard: onAddCard,
+            onSave: onSave
+        ))
+    }
     
     var body: some View {
         ScrollView {
@@ -32,7 +36,7 @@ struct LLFirstCardView: View {
                         .cornerRadius(20)
                         .padding(.bottom, 20)
                 } else {
-                    TextField("Deck Name", text: $deckName)
+                    TextField("Deck Name", text: $viewModel.deckTitle)
                         .font(.title)
                         .padding()
                         .background(Color.green.opacity(0.1))
@@ -40,49 +44,24 @@ struct LLFirstCardView: View {
                         .padding(.bottom, 20)
                 }
 
-                // MARK: Front Card
-                SmallCardView(cardText: "Front Card", text: $frontText)
+                SmallCardView(cardText: "Front Card", text: $viewModel.frontText)
+                SmallCardView(cardText: "Back Card", text: $viewModel.backText)
 
-                
-                // MARK: Front Card
-                
-                SmallCardView(cardText: "Back Card", text: $backText)
-
-                
                 Spacer()
                 
-                // MARK: Save Button
                 Button(action: {
-                    if deck != nil {
-                        let newCard = Card(front: frontText, back: backText)
-                        onAddCard?(newCard)
-                    } else {
-                        let newCard = Card(front: frontText, back: backText)
-                        let newDeck = Deck(title: deckName)
-                        newDeck.cards.append(newCard)
-                        
-                        modelContext.insert(newDeck)
-                        
-                        do {
-                            try modelContext.save()
-                            print("Deck saved successfully!")
-                        } catch {
-                            print("Error saving deck: \(error.localizedDescription)")
-                        }
-                        onSave?(newDeck)
-                    }
+                    viewModel.saveOrAddCard(deck: deck)
                     dismiss()
                 }) {
                     Text(deck == nil ? "Save Deck" : "Add Card")
                         .font(.title)
                         .fontWeight(.bold)
-                        
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(!deckName.isEmpty && deckName.isEmpty || frontText.isEmpty || backText.isEmpty ? .gray.opacity(0.7) : .blue.opacity(0.7))
+                        .background(viewModel.isButtonDisabled(deck: deck) ? .gray.opacity(0.7) : .blue.opacity(0.7))
                         .foregroundStyle(Color.white)
                 }
-                .disabled(deckName.isEmpty && deck == nil || frontText.isEmpty || backText.isEmpty)
+                .disabled(viewModel.isButtonDisabled(deck: deck))
                 .cornerRadius(20)
                 .padding()
             }
@@ -95,11 +74,21 @@ struct LLFirstCardView: View {
     }
 }
 
-#Preview {
-    LLFirstCardView { newDeck in
-        print("New Deck: \(newDeck.title)")
-    }
-}
+//#Preview {
+//    let mockModelContext = ModelContext() // Mock ModelContext
+//    let previewDeck = Deck(title: "Sample Deck") // Example Deck
+//    
+//    LLFirstCardView(
+//        deck: previewDeck,
+//        modelContext: mockModelContext,
+//        onAddCard: { newCard in
+//            print("Preview Add Card: \(newCard.front) / \(newCard.back)")
+//        },
+//        onSave: { newDeck in
+//            print("Preview Save Deck: \(newDeck.title)")
+//        }
+//    )
+//}
 
 extension View {
     func hideKeyboard() {
