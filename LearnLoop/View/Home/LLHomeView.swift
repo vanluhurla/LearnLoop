@@ -76,9 +76,15 @@ struct LLHomeView: View {
             .navigationDestination(for: LLHomeViewDestination.self) { destination in
                 switch destination {
                 case .firstCard:
-                    LLFirstCardView(onSave: { newDeck in
-                        viewModel.addNewDeck(newDeck)
-                    })
+                    LLFirstCardView(
+                        modelContext: modelContext,
+                        onAddCard: { newCard in
+                            print("Added new card: \(newCard.front) / \(newCard.back)")
+                        },
+                        onSave: { newDeck in
+                            viewModel.addNewDeck(newDeck)
+                        }
+                    )
                 }
             }
         }
