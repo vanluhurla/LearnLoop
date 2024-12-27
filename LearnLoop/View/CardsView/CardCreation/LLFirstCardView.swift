@@ -16,7 +16,8 @@ struct LLFirstCardView: View {
     
     var deck: Deck?
     
-    init(modelContext: ModelContext, onAddCard: ((Card) -> Void)? = nil, onSave: ((Deck) -> Void)?) {
+    init(deck: Deck? = nil, modelContext: ModelContext, onAddCard: ((Card) -> Void)? = nil, onSave: ((Deck) -> Void)?) {
+        self.deck = deck
         _viewModel = StateObject(wrappedValue: LLFirstCardViewModel(
             modelContext: modelContext,
             onAddCard: onAddCard,

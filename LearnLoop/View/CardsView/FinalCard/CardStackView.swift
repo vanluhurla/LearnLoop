@@ -44,7 +44,7 @@ struct CardStackView: View {
                         let offset = CGFloat(index - currentIndex)
                         CardViewCell(
                             tapText: "",
-                            color: .gray,
+                            color: .flashcardColor,
                             contentCardText: card.front
                         )
                         .offset(y: offset)

@@ -9,7 +9,7 @@ import SwiftUI
 
 
 @main
-struct MyApp: App {
+struct LearnLoopApp: App {
     @StateObject private var dataController = DataController()
     
     var body: some Scene {

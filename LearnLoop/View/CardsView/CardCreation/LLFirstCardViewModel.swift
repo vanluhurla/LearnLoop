@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-
+@MainActor
 class LLFirstCardViewModel: ObservableObject {
     
     @Published var frontText: String = ""
@@ -39,15 +39,15 @@ class LLFirstCardViewModel: ObservableObject {
             do {
                 try modelContext.save()
                 print("Deck presented!")
-                onSave?(newDeck)
             } catch {
                 print(error.localizedDescription)
             }
+            onSave?(newDeck)
         }
     }
     
     func isButtonDisabled(deck: Deck?) -> Bool {
-        return deckTitle.isEmpty || frontText.isEmpty || backText.isEmpty || (deck == nil && deckTitle.isEmpty)
+        return !deckTitle.isEmpty && deckTitle.isEmpty || frontText.isEmpty || backText.isEmpty
     }
 }
 

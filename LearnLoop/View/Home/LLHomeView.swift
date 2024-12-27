@@ -96,35 +96,14 @@ struct LLHomeView: View {
     private var deckList: some View {
         VStack {
             List {
-                ForEach(viewModel.decks.indices, id: \.self) { index in
-                    let deck = viewModel.decks[index]
-                    
-                    Group {
-                        if viewModel.isEditing {
-                            LLHomeDeckCell(deck: $viewModel.decks[index], isEditing: viewModel.isEditing)
-                                .onTapGesture {
-                                    withAnimation {
-                                        viewModel.isTitleEditing = true
-                                        viewModel.showButtons = false
-                                    }
-                                }
-                                .onDisappear {
-                                    viewModel.isTitleEditing = false
-                                }
-                        } else {
-                            NavigationLink(destination: LLFinalCardView(deck: deck)) {
-                                LLHomeDeckCell(deck: $viewModel.decks[index], isEditing: viewModel.isEditing)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            .padding(10)
-                        }
-                    }
-                    .padding(.vertical, 5)
-                    .background(Color.backgroundCellColour)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .shadow(color: Color.gray.opacity(0.1), radius: 1, x: 0, y: 1)
-                    .listRowSeparator(.hidden)
-                    .listRowBackground(Color.clear)
+                ForEach(viewModel.decks) { deck in
+                    deckCell(for: deck)
+                        .padding(.vertical, 5)
+                        .background(Color.backgroundCellColour)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .shadow(color: Color.gray.opacity(0.1), radius: 1, x: 0, y: 1)
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
                 }
                 .onDelete(perform: { indexSet in
                     viewModel.deleteDeck(at: indexSet)
@@ -132,6 +111,29 @@ struct LLHomeView: View {
             }
         }
     }
+
+    @ViewBuilder
+    private func deckCell(for deck: Deck) -> some View {
+        if viewModel.isEditing {
+            LLHomeDeckCell(deck: $viewModel.decks[viewModel.decks.firstIndex(where: { $0.id == deck.id }) ?? 0], isEditing: viewModel.isEditing)
+                .onTapGesture {
+                    withAnimation {
+                        viewModel.isTitleEditing = true
+                        viewModel.showButtons = false
+                    }
+                }
+                .onDisappear {
+                    viewModel.isTitleEditing = false
+                }
+        } else {
+            NavigationLink(destination: LLFinalCardView(deck: deck, modelContext: modelContext)) {
+                LLHomeDeckCell(deck: $viewModel.decks[viewModel.decks.firstIndex(where: { $0.id == deck.id }) ?? 0], isEditing: viewModel.isEditing)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .padding(10)
+        }
+    }
+
 }
 
 //#Preview {
