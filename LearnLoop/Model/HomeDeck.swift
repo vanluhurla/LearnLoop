@@ -19,7 +19,11 @@ class Deck: Identifiable, Equatable {
         self.title = title
     }
     
-    static func ==(lhs: Deck, rhs: Deck) -> Bool {
+    static func == (lhs: Deck, rhs: Deck) -> Bool {
         lhs.id == rhs.id
+    }
+    
+    var sortedCards: [Card] {
+        cards.sorted(by: { $0.sequence < $1.sequence})
     }
 }

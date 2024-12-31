@@ -26,11 +26,14 @@ class LLFirstCardViewModel: ObservableObject {
     }
     
     func saveOrAddCard(deck: Deck?) {
-        if deck != nil {
-            let newCard = Card(front: frontText, back: backText)
+        
+        if let deck {
+            let latestCard = deck.cards.max(by: { $0.sequence < $1.sequence })
+            let nextSequence = (latestCard?.sequence ?? 0) + 1
+            let newCard = Card(front: frontText, back: backText, sequence: nextSequence)
             onAddCard?(newCard)
         } else {
-            let newCard = Card(front: frontText, back: backText)
+            let newCard = Card(front: frontText, back: backText, sequence: 0)
             let newDeck = Deck(title: deckTitle)
             newDeck.cards.append(newCard)
             

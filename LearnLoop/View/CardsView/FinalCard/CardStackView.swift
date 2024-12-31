@@ -17,8 +17,9 @@ struct CardStackView: View {
     @Binding var cardOffset: CGFloat
     
     var body: some View {
+        
         ZStack {
-            if cards.isEmpty {
+            if deck.sortedCards.isEmpty {
                 VStack {
                     Text(
                     """
@@ -31,30 +32,33 @@ struct CardStackView: View {
                     .foregroundStyle(.gray)
                     .padding()
                 }
-            } else if cards.count == 1 {
+            } else if deck.sortedCards.count == 1 {
                 SingleCardView(
-                    card: cards.first,
+                    card: deck.sortedCards.first,
                     currentIndex: currentIndex,
                     isFlipped: $isFlipped
                 )
             } else {
-                ForEach(cards, id: \.id) { card in
-                    if card.id != cards[currentIndex].id {
-                        let index = cards.firstIndex(where: { $0.id == card.id })!
-                        let offset = CGFloat(index - currentIndex)
-                        CardViewCell(
-                            tapText: "",
-                            color: .flashcardColor,
-                            contentCardText: card.front
-                        )
-                        .offset(y: offset)
+                ForEach(deck.sortedCards, id: \.id) { card in
+                    if currentIndex >= 0 && currentIndex < deck.sortedCards.count {
+                        if card.id != deck.sortedCards[currentIndex].id {
+                            let index = deck.sortedCards.firstIndex(where: { $0.id == card.id }) ?? 0
+                            let offset = CGFloat(index - currentIndex)
+                            CardViewCell(
+                                tapText: "",
+                                color: .flashcardColor,
+                                counterCard: "\(currentIndex + 1)/\(deck.sortedCards.count)",
+                                contentCardText: card.front
+                            )
+                            .offset(y: offset)
+                        }
                     }
                 }
                 
-                if currentIndex >= 0 && currentIndex < cards.count {
+                if currentIndex >= 0 && currentIndex < deck.sortedCards.count {
                     CurrentCardView(
                         deck: deck,
-                        card: cards[currentIndex],
+                        card: deck.sortedCards[currentIndex],
                         currentIndex: currentIndex,
                         isFlipped: $isFlipped,
                         cardOffset: $cardOffset

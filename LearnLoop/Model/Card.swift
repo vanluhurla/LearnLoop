@@ -14,9 +14,11 @@ class Card: Identifiable {
     var id = UUID()
     var front: String
     var back: String
+    var sequence: Int = 0
     
-    init(front: String, back: String) {
+    init(front: String, back: String, sequence: Int) {
         self.front = front
         self.back = back
+        self.sequence = sequence
     }
 }

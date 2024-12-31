@@ -59,4 +59,13 @@ class LLFinalCardViewModel: ObservableObject {
             self.nextCard()
         }
     }
+    
+    func reorderCards() {
+        
+        deck.cards.sort { $0.sequence < $1.sequence }
+        
+        for (index, card) in deck.cards.enumerated() {
+            card.sequence = index
+        }
+    }
 }

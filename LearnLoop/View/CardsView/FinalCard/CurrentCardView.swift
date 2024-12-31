@@ -20,7 +20,7 @@ struct CurrentCardView: View {
             CardViewCell(
                 tapText: "Back: Tap here!",
                 color: .flashcardColor,
-                counterCard: "\(currentIndex + 1)/\(deck.cards.count)",
+                counterCard: "\(1)/\(deck.sortedCards.count)",
                 contentCardText: card.back
             )
             .rotation3DEffect(
@@ -34,7 +34,7 @@ struct CurrentCardView: View {
             CardViewCell(
                 tapText: "Front: Tap here!",
                 color: .flashcardColor,
-                counterCard: "\(currentIndex + 1)/\(deck.cards.count)",
+                counterCard: "\(1)/\(deck.sortedCards.count)",
                 contentCardText: card.front
             )
             .rotation3DEffect(

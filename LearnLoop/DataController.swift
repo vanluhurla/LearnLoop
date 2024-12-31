@@ -11,6 +11,10 @@ class DataController: ObservableObject {
     let container: ModelContainer
     
     init() {
-        container = try! ModelContainer(for: Deck.self, Card.self)
+        do {
+            container = try ModelContainer(for: Deck.self, Card.self)
+        } catch {
+            fatalError("Failed to initialize ModelContainer: \(error)")
+        }
     }
 }

@@ -37,12 +37,12 @@ struct LLHomeDeckCell: View {
     }
 }
 
-struct LLHomeDeckCell_Previews: PreviewProvider {
-    static var previews: some View {
-        let sampleDeck = Deck(title: "Sample Deck")
-        sampleDeck.cards = [Card(front: "Front", back: "Back")]
-        
-        return LLHomeDeckCell(deck: .constant(sampleDeck), isEditing: false)
-            .previewLayout(.sizeThatFits)
-    }
-}
+//struct LLHomeDeckCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let sampleDeck = Deck(title: "Sample Deck")
+//        sampleDeck.cards = [Card(front: "Front", back: "Back")]
+//        
+//        return LLHomeDeckCell(deck: .constant(sampleDeck), isEditing: false)
+//            .previewLayout(.sizeThatFits)
+//    }
+//}
