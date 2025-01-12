@@ -6,19 +6,15 @@
 //
 
 import SwiftUI
-
+import SwiftData
 
 @main
 struct LearnLoopApp: App {
-    @StateObject private var dataController = DataController()
     
     var body: some Scene {
         WindowGroup {
-            LLHomeView(
-                viewModel: LLHomeViewModel(
-                    modelContext: dataController.container.mainContext, decks: []))
-            .environment(\.modelContext, dataController.container.mainContext)
-
+            HomeView()
         }
+        .modelContainer(for: [Deck.self, Card.self], isAutosaveEnabled: true)
     }
 }

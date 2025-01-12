@@ -7,33 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		037E67FB2C6E57B900F1CF83 /* LLColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E67FA2C6E57B900F1CF83 /* LLColours.swift */; };
-		038D19852CF0A00E007D852C /* SingleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D19842CF0A00E007D852C /* SingleCardView.swift */; };
-		038D19872CF0A36B007D852C /* CurrentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D19862CF0A36B007D852C /* CurrentCardView.swift */; };
-		038D19892CF0A57C007D852C /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D19882CF0A57C007D852C /* CardStackView.swift */; };
-		038D19E42CF5E44D007D852C /* SmallCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D19E32CF5E44D007D852C /* SmallCardView.swift */; };
-		03AA8C932CDA883700B8A850 /* StatusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA8C922CDA883700B8A850 /* StatusButton.swift */; };
-		03B06E6C2CD130CD006D7474 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B06E6B2CD130CD006D7474 /* CardViewCell.swift */; };
-		03BA90D32D11CCA600FEDCAF /* LLHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BA90D22D11CCA600FEDCAF /* LLHomeViewModel.swift */; };
-		03BA90D52D12EABA00FEDCAF /* LLHomeViewDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BA90D42D12EABA00FEDCAF /* LLHomeViewDestination.swift */; };
-		03BA90F22D132DD100FEDCAF /* LLFirstCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BA90F12D132DD100FEDCAF /* LLFirstCardViewModel.swift */; };
-		03C24FF42CB8224D0098A1A5 /* LLFinalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C24FF32CB8224D0098A1A5 /* LLFinalCardView.swift */; };
+		037E67FB2C6E57B900F1CF83 /* ColourTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E67FA2C6E57B900F1CF83 /* ColourTheme.swift */; };
+		03AA8C932CDA883700B8A850 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA8C922CDA883700B8A850 /* ActionButton.swift */; };
 		03CEFF462C516FA0003A5A1C /* LearnLoopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF452C516FA0003A5A1C /* LearnLoopApp.swift */; };
-		03CEFF482C516FA0003A5A1C /* LLHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF472C516FA0003A5A1C /* LLHomeView.swift */; };
 		03CEFF4A2C516FA4003A5A1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03CEFF492C516FA4003A5A1C /* Assets.xcassets */; };
 		03CEFF4D2C516FA4003A5A1C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03CEFF4C2C516FA4003A5A1C /* Preview Assets.xcassets */; };
 		03CEFF572C516FA5003A5A1C /* LearnLoopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF562C516FA5003A5A1C /* LearnLoopTests.swift */; };
 		03CEFF612C516FA5003A5A1C /* LearnLoopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF602C516FA5003A5A1C /* LearnLoopUITests.swift */; };
 		03CEFF632C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEFF622C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift */; };
-		03D157832C5A74DF00C9602C /* LLHomeDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */; };
-		03DEC5AE2CCAA8B9003605AC /* LLHomeViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DEC5AD2CCAA8B9003605AC /* LLHomeViewButton.swift */; };
-		03E452D02CE515B200F7BB8D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E452CF2CE515B200F7BB8D /* DataController.swift */; };
-		03E452D82CE79ED900F7BB8D /* CounterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E452D72CE79ED900F7BB8D /* CounterViewCell.swift */; };
-		03E452DA2CE7A47700F7BB8D /* AddCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E452D92CE7A47700F7BB8D /* AddCardButton.swift */; };
-		03F76C812C63B999005C4097 /* LLFirstCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76C802C63B998005C4097 /* LLFirstCardView.swift */; };
+		03D157832C5A74DF00C9602C /* HomeDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D157822C5A74DF00C9602C /* HomeDeckCell.swift */; };
+		03DEC5AE2CCAA8B9003605AC /* HomeViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DEC5AD2CCAA8B9003605AC /* HomeViewButton.swift */; };
+		03E452D82CE79ED900F7BB8D /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E452D72CE79ED900F7BB8D /* CounterView.swift */; };
 		03F76C852C63BB3C005C4097 /* HomeDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76C842C63BB3C005C4097 /* HomeDeck.swift */; };
 		03F76C872C63BD18005C4097 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76C862C63BD18005C4097 /* Card.swift */; };
-		BC322D522D1DB1F700A67A70 /* LLFinalCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC322D512D1DB1F700A67A70 /* LLFinalCardViewModel.swift */; };
+		BC323F1C2D241FBD00A67A70 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC323F1B2D241FBD00A67A70 /* HomeView.swift */; };
+		BC3250DD2D26B79200A67A70 /* DeckDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3250DC2D26B79200A67A70 /* DeckDetailsView.swift */; };
+		BC58317B2D2C33A9003ADA87 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC58317A2D2C33A9003ADA87 /* CardView.swift */; };
+		BC5843442D2D395D003ADA87 /* EditableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5843432D2D395D003ADA87 /* EditableCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,20 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		037E67FA2C6E57B900F1CF83 /* LLColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLColours.swift; sourceTree = "<group>"; };
-		038D19842CF0A00E007D852C /* SingleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCardView.swift; sourceTree = "<group>"; };
-		038D19862CF0A36B007D852C /* CurrentCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCardView.swift; sourceTree = "<group>"; };
-		038D19882CF0A57C007D852C /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
-		038D19E32CF5E44D007D852C /* SmallCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCardView.swift; sourceTree = "<group>"; };
-		03AA8C922CDA883700B8A850 /* StatusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusButton.swift; sourceTree = "<group>"; };
-		03B06E6B2CD130CD006D7474 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
-		03BA90D22D11CCA600FEDCAF /* LLHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeViewModel.swift; sourceTree = "<group>"; };
-		03BA90D42D12EABA00FEDCAF /* LLHomeViewDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeViewDestination.swift; sourceTree = "<group>"; };
-		03BA90F12D132DD100FEDCAF /* LLFirstCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLFirstCardViewModel.swift; sourceTree = "<group>"; };
-		03C24FF32CB8224D0098A1A5 /* LLFinalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLFinalCardView.swift; sourceTree = "<group>"; };
+		037E67FA2C6E57B900F1CF83 /* ColourTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourTheme.swift; sourceTree = "<group>"; };
+		03AA8C922CDA883700B8A850 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		03CEFF422C516FA0003A5A1C /* LearnLoop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnLoop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03CEFF452C516FA0003A5A1C /* LearnLoopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLoopApp.swift; sourceTree = "<group>"; };
-		03CEFF472C516FA0003A5A1C /* LLHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeView.swift; sourceTree = "<group>"; };
 		03CEFF492C516FA4003A5A1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03CEFF4C2C516FA4003A5A1C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		03CEFF522C516FA5003A5A1C /* LearnLoopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnLoopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,15 +55,15 @@
 		03CEFF5C2C516FA5003A5A1C /* LearnLoopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnLoopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03CEFF602C516FA5003A5A1C /* LearnLoopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLoopUITests.swift; sourceTree = "<group>"; };
 		03CEFF622C516FA5003A5A1C /* LearnLoopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLoopUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeDeckCell.swift; sourceTree = "<group>"; };
-		03DEC5AD2CCAA8B9003605AC /* LLHomeViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeViewButton.swift; sourceTree = "<group>"; };
-		03E452CF2CE515B200F7BB8D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		03E452D72CE79ED900F7BB8D /* CounterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewCell.swift; sourceTree = "<group>"; };
-		03E452D92CE7A47700F7BB8D /* AddCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardButton.swift; sourceTree = "<group>"; };
-		03F76C802C63B998005C4097 /* LLFirstCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLFirstCardView.swift; sourceTree = "<group>"; };
+		03D157822C5A74DF00C9602C /* HomeDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDeckCell.swift; sourceTree = "<group>"; };
+		03DEC5AD2CCAA8B9003605AC /* HomeViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewButton.swift; sourceTree = "<group>"; };
+		03E452D72CE79ED900F7BB8D /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		03F76C842C63BB3C005C4097 /* HomeDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDeck.swift; sourceTree = "<group>"; };
 		03F76C862C63BD18005C4097 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		BC322D512D1DB1F700A67A70 /* LLFinalCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLFinalCardViewModel.swift; sourceTree = "<group>"; };
+		BC323F1B2D241FBD00A67A70 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BC3250DC2D26B79200A67A70 /* DeckDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckDetailsView.swift; sourceTree = "<group>"; };
+		BC58317A2D2C33A9003ADA87 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		BC5843432D2D395D003ADA87 /* EditableCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +94,7 @@
 		037E67F92C6E578C00F1CF83 /* Design */ = {
 			isa = PBXGroup;
 			children = (
-				037E67FA2C6E57B900F1CF83 /* LLColours.swift */,
+				037E67FA2C6E57B900F1CF83 /* ColourTheme.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -122,51 +102,19 @@
 		038D19832CF09EB1007D852C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				03AA8C922CDA883700B8A850 /* StatusButton.swift */,
-				03B06E6B2CD130CD006D7474 /* CardViewCell.swift */,
-				03E452D72CE79ED900F7BB8D /* CounterViewCell.swift */,
-				03E452D92CE7A47700F7BB8D /* AddCardButton.swift */,
+				03E452D72CE79ED900F7BB8D /* CounterView.swift */,
+				03AA8C922CDA883700B8A850 /* ActionButton.swift */,
+				BC58317A2D2C33A9003ADA87 /* CardView.swift */,
+				BC5843432D2D395D003ADA87 /* EditableCardView.swift */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		03AA8C902CDA876100B8A850 /* CardCreation */ = {
-			isa = PBXGroup;
-			children = (
-				03BA90F02D13298E00FEDCAF /* UI */,
-				03BA90F12D132DD100FEDCAF /* LLFirstCardViewModel.swift */,
-				03F76C802C63B998005C4097 /* LLFirstCardView.swift */,
-			);
-			path = CardCreation;
-			sourceTree = "<group>";
-		};
-		03AA8C912CDA878B00B8A850 /* FinalCard */ = {
-			isa = PBXGroup;
-			children = (
-				038D19832CF09EB1007D852C /* UI */,
-				038D19842CF0A00E007D852C /* SingleCardView.swift */,
-				038D19862CF0A36B007D852C /* CurrentCardView.swift */,
-				038D19882CF0A57C007D852C /* CardStackView.swift */,
-				BC322D512D1DB1F700A67A70 /* LLFinalCardViewModel.swift */,
-				03C24FF32CB8224D0098A1A5 /* LLFinalCardView.swift */,
-			);
-			path = FinalCard;
 			sourceTree = "<group>";
 		};
 		03BA90EF2D13297600FEDCAF /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				03BA90D42D12EABA00FEDCAF /* LLHomeViewDestination.swift */,
-				03DEC5AD2CCAA8B9003605AC /* LLHomeViewButton.swift */,
-				03D157822C5A74DF00C9602C /* LLHomeDeckCell.swift */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		03BA90F02D13298E00FEDCAF /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				038D19E32CF5E44D007D852C /* SmallCardView.swift */,
+				03DEC5AD2CCAA8B9003605AC /* HomeViewButton.swift */,
+				03D157822C5A74DF00C9602C /* HomeDeckCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -196,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				03CEFF452C516FA0003A5A1C /* LearnLoopApp.swift */,
-				03E452CF2CE515B200F7BB8D /* DataController.swift */,
 				03F76C822C63BAA3005C4097 /* Model */,
 				03D157842C5A87DB00C9602C /* View */,
 				03CEFF492C516FA4003A5A1C /* Assets.xcassets */,
@@ -243,8 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				03BA90EF2D13297600FEDCAF /* UI */,
-				03BA90D22D11CCA600FEDCAF /* LLHomeViewModel.swift */,
-				03CEFF472C516FA0003A5A1C /* LLHomeView.swift */,
+				BC323F1B2D241FBD00A67A70 /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -252,8 +198,8 @@
 		03F76C782C62855D005C4097 /* CardsView */ = {
 			isa = PBXGroup;
 			children = (
-				03AA8C902CDA876100B8A850 /* CardCreation */,
-				03AA8C912CDA878B00B8A850 /* FinalCard */,
+				038D19832CF09EB1007D852C /* UI */,
+				BC3250DC2D26B79200A67A70 /* DeckDetailsView.swift */,
 			);
 			path = CardsView;
 			sourceTree = "<group>";
@@ -397,28 +343,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03BA90D32D11CCA600FEDCAF /* LLHomeViewModel.swift in Sources */,
-				03AA8C932CDA883700B8A850 /* StatusButton.swift in Sources */,
-				038D19892CF0A57C007D852C /* CardStackView.swift in Sources */,
-				03E452D02CE515B200F7BB8D /* DataController.swift in Sources */,
-				03BA90F22D132DD100FEDCAF /* LLFirstCardViewModel.swift in Sources */,
-				03DEC5AE2CCAA8B9003605AC /* LLHomeViewButton.swift in Sources */,
-				03E452D82CE79ED900F7BB8D /* CounterViewCell.swift in Sources */,
-				03C24FF42CB8224D0098A1A5 /* LLFinalCardView.swift in Sources */,
-				038D19E42CF5E44D007D852C /* SmallCardView.swift in Sources */,
-				03BA90D52D12EABA00FEDCAF /* LLHomeViewDestination.swift in Sources */,
-				03E452DA2CE7A47700F7BB8D /* AddCardButton.swift in Sources */,
-				03B06E6C2CD130CD006D7474 /* CardViewCell.swift in Sources */,
+				BC5843442D2D395D003ADA87 /* EditableCardView.swift in Sources */,
+				03AA8C932CDA883700B8A850 /* ActionButton.swift in Sources */,
+				03DEC5AE2CCAA8B9003605AC /* HomeViewButton.swift in Sources */,
+				BC3250DD2D26B79200A67A70 /* DeckDetailsView.swift in Sources */,
+				03E452D82CE79ED900F7BB8D /* CounterView.swift in Sources */,
 				03F76C852C63BB3C005C4097 /* HomeDeck.swift in Sources */,
-				038D19872CF0A36B007D852C /* CurrentCardView.swift in Sources */,
-				038D19852CF0A00E007D852C /* SingleCardView.swift in Sources */,
-				03F76C812C63B999005C4097 /* LLFirstCardView.swift in Sources */,
-				03D157832C5A74DF00C9602C /* LLHomeDeckCell.swift in Sources */,
-				03CEFF482C516FA0003A5A1C /* LLHomeView.swift in Sources */,
+				03D157832C5A74DF00C9602C /* HomeDeckCell.swift in Sources */,
 				03CEFF462C516FA0003A5A1C /* LearnLoopApp.swift in Sources */,
-				037E67FB2C6E57B900F1CF83 /* LLColours.swift in Sources */,
+				037E67FB2C6E57B900F1CF83 /* ColourTheme.swift in Sources */,
 				03F76C872C63BD18005C4097 /* Card.swift in Sources */,
-				BC322D522D1DB1F700A67A70 /* LLFinalCardViewModel.swift in Sources */,
+				BC323F1C2D241FBD00A67A70 /* HomeView.swift in Sources */,
+				BC58317B2D2C33A9003ADA87 /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,8 +525,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -620,8 +555,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

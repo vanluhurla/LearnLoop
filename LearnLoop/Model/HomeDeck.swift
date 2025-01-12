@@ -9,21 +9,38 @@ import SwiftUI
 import SwiftData
 
 @Model
-class Deck: Identifiable, Equatable {
+final class Deck: Identifiable, Equatable {
     
-    var id = UUID()
+    @Attribute(.unique) var id: UUID
     var title: String
-    @Relationship(deleteRule: .cascade) var cards: [Card] = []
+    var cards: [Card]
+    var date: Date
     
-    init(title: String) {
+    init(id: UUID = UUID(),
+         title: String = "New Deck",
+         cards: [Card] = [],
+         date: Date = Date.now) {
+        self.id = id
         self.title = title
+        self.cards = cards
+        self.date = date
     }
-    
-    static func == (lhs: Deck, rhs: Deck) -> Bool {
-        lhs.id == rhs.id
-    }
-    
+}
+
+extension Deck {
     var sortedCards: [Card] {
-        cards.sorted(by: { $0.sequence < $1.sequence})
+        cards.sorted(by: { $0.sequence < $1.sequence })
+    }
+    var learnedCards: [Card] {
+        sortedCards.filter({ $0.isLearned })
+    }
+    var reviewedCards: [Card] {
+        sortedCards.filter({ $0.forReview })
+    }
+    var availableCards: [Card] {
+        sortedCards.filter({ !$0.isLearned && !$0.forReview })
+    }
+    var currentAvailableCard: Card? {
+        availableCards.last
     }
 }
