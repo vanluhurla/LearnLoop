@@ -1,5 +1,5 @@
 //
-//  CounterViewCell.swift
+//  CounterView.swift
 //  LearnLoop
 //
 //  Created by Vanessa Hurla on 15/11/2024.
@@ -7,19 +7,20 @@
 
 import SwiftUI
 
-struct CounterViewCell: View {
+struct CounterView: View {
     
     var label: String
     var color: Color
-    @Binding var count: Int
+    var count: Int
     
     var body: some View {
         VStack {
             Text(label)
                 .font(.subheadline)
-                .foregroundStyle(.gray)
+                .foregroundStyle(.white)
             Text("\(count)")
                 .font(.title2)
+                .foregroundStyle(.white)
                 .bold()
         }
         .padding()
