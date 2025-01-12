@@ -9,9 +9,12 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
-    
-    @Environment(\.modelContext) private var context
-    @Query var decks: [Deck]
+        
+    @ObservedObject private var viewModel: HomeViewModel
+
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         NavigationStack {
@@ -23,6 +26,14 @@ struct HomeView: View {
             .listStyle(PlainListStyle())
             .background(Color.backgroundPrimary)
             .scrollContentBackground(.hidden)
+            .onAppear {
+                viewModel.fetchDecks()
+            }
+            .alert(viewModel.errorTitle,
+                   isPresented: $viewModel.didReceiveError) {
+            } message: {
+                Text(viewModel.errorMessage)
+            }
         }
     }
 }
@@ -32,7 +43,7 @@ private extension HomeView {
     var deckList: some View {
         VStack {
             List {
-                ForEach(decks) { deck in
+                ForEach(viewModel.decks) { deck in
                     NavigationLink(destination: DeckDetailsView(deck: deck)) {
                         HomeDeckCell(title: deck.title)
                             .swipeActions {
@@ -84,13 +95,11 @@ private extension HomeView {
 // MARK: Actions
 private extension HomeView {
     func createDeck() {
-        context.insert(Deck())
-        try? context.save()
+        viewModel.createDeck()
     }
     
     func deleteDeck(_ deck: Deck) {
-        context.delete(deck)
-        try? context.save()
+        viewModel.deleteDeck(deck)
     }
 }
 
