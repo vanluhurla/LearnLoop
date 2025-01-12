@@ -24,6 +24,7 @@
 		BC3250DD2D26B79200A67A70 /* DeckDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3250DC2D26B79200A67A70 /* DeckDetailsView.swift */; };
 		BC58317B2D2C33A9003ADA87 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC58317A2D2C33A9003ADA87 /* CardView.swift */; };
 		BC5843442D2D395D003ADA87 /* EditableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5843432D2D395D003ADA87 /* EditableCardView.swift */; };
+		BC5843462D340FE5003ADA87 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5843452D340FE5003ADA87 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		BC3250DC2D26B79200A67A70 /* DeckDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckDetailsView.swift; sourceTree = "<group>"; };
 		BC58317A2D2C33A9003ADA87 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		BC5843432D2D395D003ADA87 /* EditableCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableCardView.swift; sourceTree = "<group>"; };
+		BC5843452D340FE5003ADA87 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				03BA90EF2D13297600FEDCAF /* UI */,
+				BC5843452D340FE5003ADA87 /* HomeViewModel.swift */,
 				BC323F1B2D241FBD00A67A70 /* HomeView.swift */,
 			);
 			path = Home;
@@ -351,6 +354,7 @@
 				03F76C852C63BB3C005C4097 /* HomeDeck.swift in Sources */,
 				03D157832C5A74DF00C9602C /* HomeDeckCell.swift in Sources */,
 				03CEFF462C516FA0003A5A1C /* LearnLoopApp.swift in Sources */,
+				BC5843462D340FE5003ADA87 /* HomeViewModel.swift in Sources */,
 				037E67FB2C6E57B900F1CF83 /* ColourTheme.swift in Sources */,
 				03F76C872C63BD18005C4097 /* Card.swift in Sources */,
 				BC323F1C2D241FBD00A67A70 /* HomeView.swift in Sources */,
