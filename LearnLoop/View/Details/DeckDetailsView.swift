@@ -21,8 +21,6 @@ struct DeckDetailsView: View {
     @State private var showRetrieveLearnedDialog = false
     @State private var showRetrieveReviewDialog = false
     
-    
-    
     var deck: Deck
     var currentCard: Card? {
         activeCards.last
@@ -151,10 +149,10 @@ private extension DeckDetailsView {
                 isAddingCard = true
             }
             .sheet(isPresented: $isAddingCard) {
-                EditableCardView(didCreateCard: { card in
+                EditableCardView(viewModel: EditableCardViewModel()) { card in
                     isAddingCard = false
                     saveCard(card: card)
-                })
+                }
             }
             
             
@@ -243,15 +241,13 @@ private extension DeckDetailsView {
         for card in deck.learnedCards {
             card.isLearned = false
         }
-        
         saveChanges()
     }
     
     func retrieveReviewCard() {
         for card in deck.reviewedCards {
             card.forReview = false
-        }
-        
+        }        
         saveChanges()
     }
 }

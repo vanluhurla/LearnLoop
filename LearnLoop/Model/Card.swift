@@ -19,8 +19,8 @@ final class Card: Identifiable {
     var forReview: Bool
     
     init(id: UUID = UUID(),
-         front: String,
-         back: String,
+         front: String = "",
+         back: String = "",
          sequence: Int = 0,
          isLearned: Bool = false,
          forReview: Bool = false) {
