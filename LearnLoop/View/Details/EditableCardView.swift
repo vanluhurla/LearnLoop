@@ -12,14 +12,23 @@ enum CardField {
 }
 
 struct EditableCardView: View {
+    
+    @ObservedObject private var viewModel: EditableCardViewModel
+    
     @State private var isFlipped = false
     
-    @State var frontText: String = ""
-    @State var backText: String = ""
+//    @State var frontText: String = ""
+//    @State var backText: String = ""
     
     @FocusState private var focusedField: CardField?
     
     var didCreateCard: (_ card: Card) -> Void
+    
+    init(viewModel: EditableCardViewModel,
+         createCompletion: @escaping (_ card: Card) -> Void) {
+        self.viewModel = viewModel
+        self.didCreateCard = createCompletion
+    }
     
     var body: some View {
         NavigationStack {
@@ -65,7 +74,7 @@ private extension EditableCardView {
     }
     
     func createCard() -> Card {
-        Card(front: frontText, back: backText)
+        viewModel.createCard()
     }
 }
 
@@ -74,7 +83,7 @@ private extension EditableCardView {
     var front: some View {
         VStack(alignment: .leading) {
             ZStack {
-                TextField("Type here", text: $frontText, axis: .vertical)
+                TextField("Type here", text: $viewModel.frontText, axis: .vertical)
                     .lineLimit(5...10)
                     .multilineTextAlignment(.leading)
                     .scrollContentBackground(.hidden)
@@ -101,7 +110,7 @@ private extension EditableCardView {
     var back: some View {
         VStack(alignment: .leading) {
             ZStack {
-                TextField("Type here", text: $backText, axis: .vertical)
+                TextField("Type here", text: $viewModel.backText, axis: .vertical)
                     .lineLimit(5...10)
                     .multilineTextAlignment(.leading)
                     .scrollContentBackground(.hidden)
@@ -155,36 +164,5 @@ extension View {
     }
 }
 
-//#Preview {
-//    StatefulPreviewWrapper("Front Side", "Back Side", false) { frontText, backText, isAddingCard in
-//        EditableCardView(
-//            frontText: frontText,
-//            backText: backText,
-//            isAddingCard: isAddingCard
-//        )
-//    }
-//}
-//
-//struct StatefulPreviewWrapper<Content: View>: View {
-//    @State private var frontText: String
-//    @State private var backText: String
-//    @State private var isAddingCard: Bool
-//
-//    let content: (Binding<String>, Binding<String>, Binding<Bool>) -> Content
-//
-//    init(
-//        _ frontText: String,
-//        _ backText: String,
-//        _ isAddingCard: Bool,
-//        @ViewBuilder content: @escaping (Binding<String>, Binding<String>, Binding<Bool>) -> Content
-//    ) {
-//        _frontText = State(initialValue: frontText)
-//        _backText = State(initialValue: backText)
-//        _isAddingCard = State(initialValue: isAddingCard)
-//        self.content = content
-//    }
-//
-//    var body: some View {
-//        content($frontText, $backText, $isAddingCard)
-//    }
-//}
+
+
