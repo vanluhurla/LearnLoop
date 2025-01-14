@@ -17,7 +17,7 @@ struct EditableCardViewModelTests {
     init() {
         sut = EditableCardViewModel()
     }
-
+    
     @Test func createCard() {
         // Given
         sut.frontText = "Front"

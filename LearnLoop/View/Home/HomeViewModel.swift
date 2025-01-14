@@ -36,15 +36,19 @@ class HomeViewModel: ObservableObject {
     
     func deleteDeck(_ deck: Deck) {
         context.delete(deck)
-        saveChanges()
+        saveChanges() 
     }
 }
 
 private extension HomeViewModel {
     func saveChanges() {
+        saveContext()
+        fetchDecks()
+    }
+    
+    func saveContext() {
         do {
             try context.save()
-            fetchDecks()
         } catch {
             didReceiveError = true
         }

@@ -16,10 +16,6 @@ struct EditableCardView: View {
     @ObservedObject private var viewModel: EditableCardViewModel
     
     @State private var isFlipped = false
-    
-//    @State var frontText: String = ""
-//    @State var backText: String = ""
-    
     @FocusState private var focusedField: CardField?
     
     var didCreateCard: (_ card: Card) -> Void
@@ -53,13 +49,14 @@ struct EditableCardView: View {
                         createButton
                     }
                 }
-            }.scrollIndicators(.hidden)
-                .onTapGesture {
-                    hideEditableCardKeyboard()
-                }
-                .onAppear {
-                    focusedField = .front
-                }
+            }
+            .scrollIndicators(.hidden)
+            .onTapGesture {
+                hideEditableCardKeyboard()
+            }
+            .onAppear {
+                focusedField = .front
+            }
         }
     }
 }
@@ -101,10 +98,7 @@ private extension EditableCardView {
             axis: (x: 0.0, y: 1.0, z: 0.0),
             perspective: 0.2
         )
-        .animation(isFlipped
-                   ? .linear
-                   : .linear.delay(0.35),
-                   value: isFlipped)
+        .animation(isFlipped ? .linear : .linear.delay(0.35), value: isFlipped)
     }
     
     var back: some View {
@@ -128,10 +122,7 @@ private extension EditableCardView {
             axis: (x: 0.0, y: 1.0, z: 0.0),
             perspective: 0.2
         )
-        .animation(isFlipped
-                   ? .linear.delay(0.35)
-                   : .linear,
-                   value: isFlipped)
+        .animation(isFlipped ? .linear.delay(0.35) : .linear, value: isFlipped)
     }
     
     var createButton: some View {
