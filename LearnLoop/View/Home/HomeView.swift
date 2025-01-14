@@ -9,9 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
-        
+    
     @ObservedObject private var viewModel: HomeViewModel
-
+    
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
     }
@@ -44,7 +44,7 @@ private extension HomeView {
         VStack {
             List {
                 ForEach(viewModel.decks) { deck in
-                    NavigationLink(destination: DeckDetailsView(deck: deck)) {
+                    NavigationLink(destination: DeckDetailsView(viewModel: DeckDetailsViewModel(context: viewModel.context, deck: deck))) {
                         HomeDeckCell(title: deck.title)
                             .swipeActions {
                                 deleteDeckButton(for: deck)

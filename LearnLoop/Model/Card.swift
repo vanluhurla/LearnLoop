@@ -5,17 +5,17 @@
 //  Created by Vanessa Hurla on 07/08/2024.
 //
 
-import Foundation // Should I keep Foundation or change to SwiftUI?
+import Foundation
 import SwiftData
 
 @Model
 final class Card: Identifiable {
-   
+    
     @Attribute(.unique) var id: UUID
     var front: String
     var back: String
     var sequence: Int
-    var isLearned: Bool // Should I do the same as we did on the Deck?
+    var isLearned: Bool
     var forReview: Bool
     
     init(id: UUID = UUID(),

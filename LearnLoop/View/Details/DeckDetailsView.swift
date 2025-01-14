@@ -8,25 +8,14 @@
 import SwiftUI
 
 struct DeckDetailsView: View {
-    @Environment(\.modelContext) private var context
-    @State var title: String = ""
+    
+    @ObservedObject private var viewModel: DeckDetailsViewModel
+    
     @State var isTitleEditing: Bool = false
-    @State var frontText: String = ""
-    @State var backText: String = ""
     @State var isAddingCard: Bool = false
-    @State var activeCards: [Card] = []
     
-    @State private var retrieveLearnedCards = false
-    @State private var retrieveReviewCards = false
-    @State private var showRetrieveLearnedDialog = false
-    @State private var showRetrieveReviewDialog = false
-    
-    var deck: Deck
-    var currentCard: Card? {
-        activeCards.last
-    }
-    var currentCardIndex: Int {
-        (currentCard?.sequence ?? 0) + 1
+    init(viewModel: DeckDetailsViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -34,11 +23,8 @@ struct DeckDetailsView: View {
             ScrollView {
                 VStack {
                     deckTitle
-                        .padding()
                     statusCardCounter
-                        .padding(5)
                     card
-                        .padding(-10)
                     actionButtons
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -51,6 +37,11 @@ struct DeckDetailsView: View {
             .onAppear {
                 refreshActiveCards()
             }
+            .alert(viewModel.errorTitle,
+                   isPresented: $viewModel.didReceiveError) {
+            } message: {
+                Text(viewModel.errorMessage)
+            }
         }
         .background(Color.backgroundPrimary)
     }
@@ -61,12 +52,13 @@ private extension DeckDetailsView {
     var deckTitle: some View {
         HStack {
             if isTitleEditing {
-                TextField("Deck Title", text: $title)
+                TextField("Deck Title", text: $viewModel.deckTitle)
                     .font(.title)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(height: 40)
+                    .padding(.horizontal, 10)
             } else {
-                Text(deck.title)
+                Text(viewModel.deck.title)
                     .font(.title)
                     .frame(height: 40)
             }
@@ -81,26 +73,26 @@ private extension DeckDetailsView {
                 .foregroundColor(isTitleEditing ? .green : .blue)
             }
         }
-        .padding(.horizontal, 50)
+        .padding(10)
     }
     
     var statusCardCounter: some View {
         HStack(spacing: 30) {
             CounterView(label: "Learned",
                         color: Color.theme.learnedAction,
-                        count: deck.learnedCards.count)
+                        count: viewModel.deck.learnedCards.count)
             CounterView(label: "Available",
                         color: Color.theme.accent,
-                        count: deck.availableCards.count)
+                        count: viewModel.deck.availableCards.count)
             CounterView(label: "Review",
                         color: Color.theme.reviewAction,
-                        count: deck.reviewedCards.count)
+                        count: viewModel.deck.reviewedCards.count)
         }
     }
     
     var card: some View {
         ZStack {
-            if activeCards.isEmpty {
+            if viewModel.activeCards.isEmpty {
                 VStack {
                     Text(
                     """
@@ -116,36 +108,35 @@ private extension DeckDetailsView {
             } else {
                 cardView
             }
-        }.frame(width: 300, height: 400)
-            .padding(30)
+        }
+        .frame(width: 300, height: 400)
+        .padding(30)
     }
     
     var cardView: some View {
-        CardView(frontText: currentCard?.front ?? "",
-                 backText: currentCard?.back ?? "")
+        CardView(frontText: getCurrentCard()?.front ?? "",
+                 backText: getCurrentCard()?.back ?? "")
     }
     
     var actionButtons: some View {
         HStack(spacing: 30) {
-            ActionButton(type: deck.availableCards.isEmpty && retrieveLearnedCards ? .retrieveLearned : .learn) {
-                if activeCards.isEmpty && retrieveLearnedCards {
-                    showRetrievedLeanedConfirmation()
+            ActionButton(type: viewModel.retrieveLearnedCards ? .retrieveLearned : .learn) {
+                if viewModel.retrieveLearnedCards {
+                    showRetrievedLearnedConfirmation()
                 } else {
                     markCardAsLearned()
                 }
             }
             .confirmationDialog("Retrieve learned cards?",
-                                isPresented: $showRetrieveLearnedDialog,
+                                isPresented: $viewModel.showRetrieveLearnedDialog,
                                 titleVisibility: .visible) {
                 Button("Retrieve", role: .destructive) {
                     retrieveLearnedCard()
                 }
-                Button("Cancel", role: .cancel) {}
+                Button("Cancel", role: .cancel) {
+                }
             }
-            
             ActionButton(type: .create) {
-                frontText = ""
-                backText = ""
                 isAddingCard = true
             }
             .sheet(isPresented: $isAddingCard) {
@@ -154,17 +145,15 @@ private extension DeckDetailsView {
                     saveCard(card: card)
                 }
             }
-            
-            
-            ActionButton(type: deck.availableCards.isEmpty && retrieveReviewCards ? .retrieveReview : .review) {
-                if activeCards.isEmpty && retrieveReviewCards {
+            ActionButton(type: viewModel.retrieveReviewCards ? .retrieveReview : .review) {
+                if viewModel.retrieveReviewCards {
                     showRetrievedReviewConfirmation()
                 } else {
                     markCardToReview()
                 }
             }
             .confirmationDialog("Retrieve cards for review?",
-                                isPresented: $showRetrieveReviewDialog,
+                                isPresented: $viewModel.showRetrieveReviewDialog,
                                 titleVisibility: .visible) {
                 Button("Retrieve", role: .destructive) {
                     retrieveReviewCard()
@@ -174,90 +163,49 @@ private extension DeckDetailsView {
         }
         .padding(.bottom, 30)
     }
-    
 }
-
 
 //MARK: Action
 private extension DeckDetailsView {
     func saveTitle() {
-        deck.title = title
-        saveChanges()
+        viewModel.saveTitle()
     }
     
     func saveCard(card: Card) {
-        let sequence: Int = {
-            if let latestCard = deck.currentAvailableCard {
-                return latestCard.sequence + 1
-            } else {
-                return 0
-            }
-        }()
-        card.sequence = sequence
-        deck.cards.append(card)
-        saveChanges()
+        viewModel.saveCard(card: card)
     }
     
     func markCardAsLearned() {
-        guard let currentCard = deck.currentAvailableCard else { return }
-        currentCard.isLearned = true
-        saveChanges()
+        viewModel.markCardAsLearned()
     }
     
     func markCardToReview() {
-        guard let currentCard = deck.currentAvailableCard else { return }
-        currentCard.forReview = true
-        saveChanges()
-    }
-    
-    func saveChanges() {
-        saveContext()
-        refreshActiveCards()
-    }
-    
-    func saveContext() {
-        do {
-            try context.save()
-        } catch {
-            // show an alert saying the changes could not be saved
-        }
+        viewModel.markCardToReview()
     }
     
     func refreshActiveCards() {
-        activeCards = deck.availableCards
-        retrieveLearnedCards = !deck.learnedCards.isEmpty
-        retrieveReviewCards = !deck.reviewedCards.isEmpty
+        viewModel.refresh()
     }
     
-    func showRetrievedLeanedConfirmation() {
-        showRetrieveLearnedDialog = true
+    func showRetrievedLearnedConfirmation() {
+        viewModel.showRetrievedLearnedConfirmation()
     }
     
     func showRetrievedReviewConfirmation() {
-        showRetrieveReviewDialog = true
+        viewModel.showRetrievedReviewConfirmation()
     }
     
     func retrieveLearnedCard() {
-        for card in deck.learnedCards {
-            card.isLearned = false
-        }
-        saveChanges()
+        viewModel.retrieveLearnedCard()
     }
     
     func retrieveReviewCard() {
-        for card in deck.reviewedCards {
-            card.forReview = false
-        }        
-        saveChanges()
+        viewModel.retrieveReviewCard()
     }
-}
-
-#Preview {
-    DeckDetailsView(isTitleEditing: true,
-                    deck: Deck(title: "Deck Title"))
-}
-
-extension View {
+    func getCurrentCard() -> Card? {
+        viewModel.getCurrentCard()
+    }
+    
     func hideDeckDetailsKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }

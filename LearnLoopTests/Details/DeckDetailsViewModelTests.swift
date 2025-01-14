@@ -15,6 +15,7 @@ struct DeckDetailsViewModelTests {
     private var contextMock: ModelContext {
         testDependencies.container.mainContext
     }
+    
     private let deckMock: Deck
     
     var sut: DeckDetailsViewModel!
@@ -68,8 +69,8 @@ struct DeckDetailsViewModelTests {
     
     @Test func refreshRetrieveReviewCardsWithActive() {
         // Given
-        let card1 = Card(forReview: false)
-        let card2 = Card(forReview: true)
+        _ = Card(forReview: false)
+        _ = Card(forReview: true)
         // When
         sut.refresh()
         // Then
@@ -171,7 +172,7 @@ struct DeckDetailsViewModelTests {
     
     @Test func showRetrievedLeanedConfirmation() {
         // When
-        sut.showRetrievedLeanedConfirmation()
+        sut.showRetrievedLearnedConfirmation()
         // Then
         #expect(sut.showRetrieveLearnedDialog == true)
     }
@@ -181,5 +182,10 @@ struct DeckDetailsViewModelTests {
         sut.showRetrievedReviewConfirmation()
         // Then
         #expect(sut.showRetrieveReviewDialog == true)
+    }
+    
+    @Test func errorAlertText() {
+        #expect(sut.errorTitle ==  "Error")
+        #expect(sut.errorMessage == "Ooops... an error has occured.")
     }
 }

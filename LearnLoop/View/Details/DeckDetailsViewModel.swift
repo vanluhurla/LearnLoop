@@ -19,6 +19,9 @@ class DeckDetailsViewModel: ObservableObject {
     @Published var retrieveLearnedCards = false
     @Published var retrieveReviewCards = false
     @Published var activeCards: [Card] = []
+    @Published var didReceiveError: Bool = false
+    @Published var errorTitle = "Error"
+    @Published var errorMessage = "Ooops... an error has occured."
     
     init(context: ModelContext,
          deck: Deck) {
@@ -76,7 +79,7 @@ class DeckDetailsViewModel: ObservableObject {
         saveChanges()
     }
     
-    func showRetrievedLeanedConfirmation() {
+    func showRetrievedLearnedConfirmation() {
         showRetrieveLearnedDialog = true
     }
     
@@ -99,7 +102,7 @@ private extension DeckDetailsViewModel {
         do {
             try context.save()
         } catch {
-            print("Couldn't sabe changes.")
+            didReceiveError = true
         }
     }
 }
