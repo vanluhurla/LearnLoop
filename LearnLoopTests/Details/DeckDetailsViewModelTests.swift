@@ -69,8 +69,10 @@ struct DeckDetailsViewModelTests {
     
     @Test func refreshRetrieveReviewCardsWithActive() {
         // Given
-        _ = Card(forReview: false)
-        _ = Card(forReview: true)
+        let card1 = Card(forReview: false)
+        let card2 = Card(forReview: true)
+        sut.saveCard(card: card1)
+        sut.saveCard(card: card2)
         // When
         sut.refresh()
         // Then
